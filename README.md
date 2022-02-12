@@ -1,3 +1,3 @@
 # vaccines
 
-This is my_dev, not your_dev!
+Collaborative project to investigate vaccine effectiveness
