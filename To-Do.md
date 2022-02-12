@@ -8,7 +8,7 @@
 3. Determine source(s) for Covid data.
    * CDC (https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh)
    * Johns Hopkins (https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports)
-   * Other ?? -- Maybe later: DCD and JHU should have everything we need for step #2
+   * Other ?? -- Maybe later: CDC and JHU should have everything we need for step #2
 4. Identify overlapping identifiers between data sets. -- FIPS
 5. Import datasets into Python.
    * Someone should get the vaccination data
