@@ -10,3 +10,4 @@ This document is intended to be a list of our expected availability. Provide as 
 
 **Kayne:** I have 3 hours Sunday morning, then Monday night/Tuesday night but not until after 9pm. I can be reached on Slack but feel free to text: 781-690-0506
 
+**Bridget** I'm free most of the day Sunday and Monday. You can discord me (Bridget#2403). 
