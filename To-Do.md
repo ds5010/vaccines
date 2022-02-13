@@ -1,3 +1,5 @@
+**Look at the issues page for most up to date to do items**
+
 1. Align schedules with team members.
 2. Finalize project objective.
    * Explore vaccination rate against death rate, but what time frame? 
