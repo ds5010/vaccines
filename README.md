@@ -15,3 +15,4 @@ See Makefile for details.
 ## JHU data
 
 TBD
+# how to combine two data using FIPS codes at county level
