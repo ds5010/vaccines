@@ -16,3 +16,5 @@ See Makefile for details.
 
 TBD
 # how to combine two data using FIPS codes at county level
+find sth might be useful
+https://www.geeksforgeeks.org/how-to-create-multiple-csv-files-from-existing-csv-file-using-pandas/?ref=rp
