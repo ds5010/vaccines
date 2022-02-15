@@ -16,11 +16,9 @@ def get_data_from_startdate_to_enddate_csv(start_date, end_date):
                      header=0)
     print(type(df.iloc[1]))
     df['Date'] = pd.to_datetime(df.Date)
-    df.Date
+    # df.Date
     start_date = pd.to_datetime(start_date)
     end_date = pd.to_datetime(end_date)
-    # print(start_date)
-    # print(end_date)
     df = df.loc[df.Date >= start_date][df.Date <= end_date]
     # df = df.loc[start_date:end_date]
     df.to_csv('my_new_file.csv', index=False)
@@ -33,11 +31,8 @@ def get_data_from_startdate_to_enddate_gzip(start_date, end_date):
                      header=0)
     print(type(df.iloc[1]))
     df['Date'] = pd.to_datetime(df.Date)
-    df.Date
     start_date = pd.to_datetime(start_date)
     end_date = pd.to_datetime(end_date)
-    # print(start_date)
-    # print(end_date)
     df = df.loc[df.Date >= start_date][df.Date <= end_date]
     # df = df.loc[start_date:end_date]
     df.to_csv('May_1st_to_November_30th.csv.gz',
