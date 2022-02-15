@@ -1,7 +1,8 @@
 #Bridget Mohler
-#This program reads in the JHU files from their various URLs, concatenates those files, and then outputs a single file containing all the data. 
-#Acknowledgements to Prof. Bogden, stackoverflow, the pandas documentation, and the Python documentation, all of which were referenced over the course of the creation of this code. 
-#Since the dates are included in the urls but not the csv files, I need to go through and add a Date column with the corresponding dates for the datum, but I'm pretty sure I have a sense of how to do that once I'm not so tired. 
+#15 February 2022
+#Acknowledgements to Prof. Bogden, stackoverflow, the pandas documentation, and the Python documentation, all of which were referenced over the course of the creation of this code.
+#This program merges the daily JHU files into one CSV and adds a Date column with the corresponding datum. 
+
 import pandas as pd
 
 months=["05", "06", "07", "08", "09", "10", "11"]
@@ -18,7 +19,17 @@ for month in months:
             print("Not valid")
             continue
         else:
-            dates.append(date)
+            if url<"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-16-2021.csv":
+                for i in range(4006):
+                    dates.append(date)
+            if "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-15-2021.csv"<url<"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/10-06-2021":
+                for i in range(4007):
+                    dates.append(date)
+            if url>"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/10-05-2021.csv":
+                for i in range(4008):
+                    dates.append(date)
             urls.append(url)
 
-pd.concat(map(pd.read_csv, urls)).to_csv("JHU_masterfile.csv")
+file=pd.concat(map(pd.read_csv, urls))
+file["Date"]=dates
+file.to_csv("JHU_masterfile_with)dates.csv")
