@@ -31,3 +31,7 @@ def get_data_from_startdate_to_enddate_gzip(start_date, end_date):
     df.to_csv('May_1st_to_November_30th.csv.gz',
               index=False, compression='gzip')
 ```
+## how to play with the code
+- first, make sure that there are no file named ```May_1st_to_November_30th.csv.gz``` in your directory
+- second, define start date and end date in get_dcd_date_from_start_end.py
+- run``` python get_dcd_date_from_start_end.py``` you will get a csv.zip file containing data from 5/1/2021 to 11/30/2021
