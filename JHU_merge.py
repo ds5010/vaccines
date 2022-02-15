@@ -1,6 +1,6 @@
 #Bridget Mohler
 #This program reads in the JHU files from their various URLs, concatenates those files, and then outputs a single file containing all the data. 
-#Acknowledgements to Prof. Bogden, stackexchange, the pandas documentation, and the Python documentation, all of which were referenced over the course of the creation of this code. 
+#Acknowledgements to Prof. Bogden, stackoverflow, the pandas documentation, and the Python documentation, all of which were referenced over the course of the creation of this code. 
 #Since the dates are included in the urls but not the csv files, I need to go through and add a Date column with the corresponding dates for the datum, but I'm pretty sure I have a sense of how to do that once I'm not so tired. 
 import pandas as pd
 
