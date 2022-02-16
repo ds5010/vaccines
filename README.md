@@ -28,5 +28,20 @@ vaccine_data_total.py
 
 ## Results
 
+When you generate a plot using 05/01/2021 as the date, the script shows this plot:
+
+![Outlier](05.01.outlier.png)
+
+Clearly there is some kind of an outlier here, but if we look closer at the cluster of points we get this:
+
+![May](05.01.png)
+
+Running the script again at July 1:
+
+![July](07.01.png)
+
+And November 30:
+
+![November](11.30.21.png)
 
 
