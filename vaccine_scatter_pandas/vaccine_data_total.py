@@ -49,9 +49,9 @@ def scatter(df,x,y):
 
 #FOR MAY 1st 2021
 #calling the first function to create the DF from CDC
-cdc = file_to_df('COVID-19_Vaccinations_in_the_United_States_County.csv.gz','Series_Complete_18Plus','05/01/2021')
+cdc = file_to_df('COVID-19_Vaccinations_in_the_United_States_County.csv.gz','Series_Complete_Pop_Pct','05/01/2021')
 #cleaning the CDC data 
-cdc_clean = clean_data(cdc,'Series_Complete_18Plus')
+cdc_clean = clean_data(cdc,'Series_Complete_Pop_Pct')
 #same thing for JHU
 jhu = file_to_df('JHU_masterfile_with_dates.csv.gz','Deaths','05-01-2021')
 #cleaning the JHU data
@@ -59,20 +59,20 @@ jhu_clean = clean_data(jhu,'Deaths')
 #merging the two DFs using FIPS as the common key
 merged_df = merged_data(cdc_clean,jhu_clean,'FIPS')
 #generating a scatterplot
-scatter(merged_df,'Deaths','Series_Complete_18Plus')
+scatter(merged_df,'Deaths','Series_Complete_Pop_Pct')
 
 #FOR AUG 1st 2021
-cdc = file_to_df('COVID-19_Vaccinations_in_the_United_States_County.csv.gz','Series_Complete_18Plus','08/01/2021')
-cdc_clean = clean_data(cdc,'Series_Complete_18Plus')
+cdc = file_to_df('COVID-19_Vaccinations_in_the_United_States_County.csv.gz','Series_Complete_Pop_Pct','08/01/2021')
+cdc_clean = clean_data(cdc,'Series_Complete_Pop_Pct')
 jhu = file_to_df('JHU_masterfile_with_dates.csv.gz','Deaths','08-01-2021')
 jhu_clean = clean_data(jhu,'Deaths')
 merged_df = merged_data(cdc_clean,jhu_clean,'FIPS')
-scatter(merged_df,'Deaths','Series_Complete_18Plus')
+scatter(merged_df,'Deaths','Series_Complete_Pop_Pct')
 
 #FOR NOV 30th 2021
-cdc = file_to_df('COVID-19_Vaccinations_in_the_United_States_County.csv.gz','Series_Complete_18Plus','11/30/2021')
-cdc_clean = clean_data(cdc,'Series_Complete_18Plus')
+cdc = file_to_df('COVID-19_Vaccinations_in_the_United_States_County.csv.gz','Series_Complete_Pop_Pct','11/30/2021')
+cdc_clean = clean_data(cdc,'Series_Complete_Pop_Pct')
 jhu = file_to_df('JHU_masterfile_with_dates.csv.gz','Deaths','11-30-2021')
 jhu_clean = clean_data(jhu,'Deaths')
 merged_df = merged_data(cdc_clean,jhu_clean,'FIPS')
-scatter(merged_df,'Deaths','Series_Complete_18Plus')
+scatter(merged_df,'Deaths','Series_Complete_Pop_Pct')
