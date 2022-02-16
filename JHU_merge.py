@@ -2,6 +2,7 @@
 #15 February 2022
 #Acknowledgements to Prof. Bogden, stackoverflow, the pandas documentation, and the Python documentation, all of which were referenced over the course of the creation of this code.
 #This program merges the daily JHU files into one CSV and adds a Date column with the corresponding datum. 
+#No fancy requirements to run the code, just python3 JHU_merge.py in the command line and you should be all set. 
 
 import pandas as pd
 
