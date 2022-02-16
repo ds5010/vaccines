@@ -13,7 +13,10 @@ def readit(filename):
     data = []
     for line in list:
         values = line.split(",")
-        datum = {keys[i]: value for i, value in enumerate(values)}
+        try:                                                            #creates 'list out of index' error if no value before comma (i.e. first column is blank)
+            datum = {keys[i]: value for i, value in enumerate(values)}
+        except:
+            continue
         data.append(datum)
     print("it worked")
     return data
