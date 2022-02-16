@@ -20,6 +20,8 @@ for month in months:
             continue
         else:
             if url<"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-16-2021.csv":
+                #I ran print(len()) statements to find the number of rows for each date which are where the different ranges for different dates came from. 
+                #To make sure I hadn't lost or added anything in this process I also ran a print(len()) for my concatenated file and my dates list to make sure they matched. 
                 for i in range(4006):
                     dates.append(date)
             if "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/09-15-2021.csv"<url<"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/10-06-2021":
