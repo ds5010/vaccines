@@ -30,22 +30,16 @@ vaccine_data_total.py
 
 When you generate a plot using 05/01/2021 as the date, the script shows this plot:
 
-![Outlier](05.01.outlier.png)
-
-Clearly there is some kind of an outlier here, but if we look closer at the cluster of points we get this:
-
-![May](05.01.png)
+![may](may.png)
 
 Running the script again at July 1 21:
 
-![July](07.01.png)
+![July](july.png)
 
 And November 30 21:
 
-![November](11.30.21.png)
+![November](nov.png)
 
-The plots represent vaccinated population over 18 on the Y axis and deaths due to COVID on the x axis. Each point is a county (FIPS code). You would expect that over time, the points would move towards the bottom left corner (more people get vaccinated and less people dying). The results do seem to show this trend a little bit, but they also just generally show a clustering of points (points are moving closer together). Based on these results, I am wondering If I missed a step somewhere in the data procssing peice because of the outlier. EDIT: I just realized that my plots may be like this because the data is not normalized for population size.... so the reason why it is showing deaths correlated with vaccines could be because of that...
+The plots represent vaccinated population over 18 percentage on the Y axis and deaths due to COVID on the x axis. Each point is a county (FIPS code). You would expect that over time, the points would move towards the upper left corner (more people get vaccinated and less people dying). The results do seem to show this trend in terms of the population getting more vaccinated, but not necessarily with the deaths. EDIT: I just realized that my plots may be like this because the data is not normalized for population size for the deaths...but I am out of time for this assingment. I think if you normalize the deaths then you would get correct looking plots.
 
 I learned how to work with data csv files, combine them, clean them, and start to visualize them. I think it is important to have a very clear end goal in mind and be framiliar with the data in order to know what to expect (what columns you need, what challenges there will be on the cleaning side). I am still not sure that the FIPS code matched up perfectly or how to check this. It seemed like it worked, but I want to learn more on how to verify this.
-
-EDIT: I just realized that my plots may be like this because the data is normalized for population size
