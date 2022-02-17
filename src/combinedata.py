@@ -4,7 +4,7 @@ import pandas as pd
 def merge_by_FIPS(vaccinations_file, deaths_file, outfile=None):
     vaccinations = pd.read_csv(vaccinations_file, converters={"FIPS" : str})
     deaths = pd.read_csv(deaths_file, converters={"FIPS" : str})
-    merged = vaccinations.merge(deaths, on="FIPS", sort=True)
+    merged = vaccinations.merge(deaths, on="FIPS", sort=True).dropna()
     if outfile:
         merged.to_csv(outfile, index=False)
     return merged
