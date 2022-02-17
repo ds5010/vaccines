@@ -20,10 +20,11 @@
     * Fields: FIPS, deaths
   * Status: DONE
   * Command: `make deaths` (see Makefile for details)
-* Merge data
-  * Goal: A function that reads and merges the vaccine and deaths data, returning a single dataframe
-  * Rationale: merged data used for EDA, including the baseline scatterplot
-  * Status: Unknown
+* Merge vaccine & deaths data
+  * Goal: Create a CSV from merged vaccine and deaths data
+  * Rationale: We'll use merged data for EDA, including the baseline scatterplot
+  * Status: DONE
+  * Command: `make merge` (see Makefile for details)
 * Scatterplot
   * Goal: scatterplot of deaths/100K vs vaccination status for each county
   * Rationale: this will be a baseline data visualization
