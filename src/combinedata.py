@@ -1,37 +1,13 @@
 import pandas as pd
 
-counties = pd.read_csv('JHU_05-01-2021.csv')
-may = pd.read_csv(data/'JHU_05-01-2021.csv')
-jun = pd.read_csv(data/'JHU_06-01-2021.csv')
-jul = pd.read_csv(data/'JHU_07-01-2021.csv')
-aug = pd.read_csv(data/'JHU_08-01-2021.csv')
-sep = pd.read_csv(data/'JHU_09-01-2021.csv')
-oct = pd.read_csv(data/'JHU_10-01-2021.csv')
-nov = pd.read_csv(data/'JHU_11-01-2021.csv')
-dec = pd.read_csv(data/'JHU_12-01-2021.csv')
+# learn about merging dataframes at https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html
+def merge_by_FIPS(vaccinations_file, deaths_file, outfile=None):
+    vaccinations = pd.read_csv(vaccinations_file)
+    deaths = pd.read_csv(deaths_file)
+    merged = vaccinations.merge(deaths, on="FIPS", sort=True)
+    if outfile:
+        merged.to_csv(outfile, index=False)
+    return merged
 
-countylist = []
-countylist.append(counties.pop('FIPS'))
-
-# unsuccessful attempts to remove blanks and just leave rows with FIPS code
-# for i in range (len(countylist)):    
-#   try:
-#     int(countylist[i])
-#   except:
-#     countylist.pop[i]
-####
-# for i in range (len(countylist)):
-#  a = countylist[i]
-#  if a > 0:
-#    continue
-#  else:
-#    countylist.pop[i]
-#
-#
-
-
-
-fips = {'FIPS': countylist}
-
-
-print(may)
+merge_by_FIPS("data/vaccinations-11-30-2021.csv", "data/deaths-05-01-2021-to-11-30-2021.csv", \
+    outfile="data/vaccinations-and-deaths-11-30-2021")
