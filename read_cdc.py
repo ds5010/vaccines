@@ -2,7 +2,7 @@ import pandas as pd
 
 desired_date = "11/30/2021"
 
-filename = "COVID-19_Vaccinations_in_the_United_States_County.csv.gz"
+filename = "data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz"
 df = pd.read_csv(filename, compression="gzip", converters={'FIPS' : str})
 
 # Filter by date
