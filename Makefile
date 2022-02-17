@@ -1,3 +1,11 @@
+# Plot the merged data
+plot:
+	python -B app.py
+
+# Create a CSV from merged vaccines and deaths CSVs
+merge:
+	python -B src/merge.py
+
 # Create CSV with sampled CDC data
 vaccines:
 	python -B src/vaccines.py
