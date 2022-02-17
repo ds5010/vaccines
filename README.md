@@ -2,8 +2,6 @@
 
 Collaborative project to investigate vaccine effectiveness
 
-MY CHANGE
-
 ## CDC data
 
 Download and compress the CDC vaccination data
