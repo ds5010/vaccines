@@ -1,6 +1,6 @@
 # Plot the merged data
 plot:
-	python -B app.py
+	python -B src/plot.py
 
 # Create a CSV from merged vaccines and deaths CSVs
 merge:
