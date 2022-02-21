@@ -14,9 +14,6 @@ vaccines:
 deaths:
 	python -B src/deaths.py
 
-merged:
-	python -B src/combinedata.py
-
 # Download and compress the CDC data
 cdc:
 	mkdir -p data
