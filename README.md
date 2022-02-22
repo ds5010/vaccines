@@ -259,4 +259,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## References
+## Project Walkthrough
+To replicate the results presented in this README take the following steps: 
+1. Download repo. 
