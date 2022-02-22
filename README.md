@@ -227,5 +227,9 @@ This generates the following graph, which illustrates a very stark difference be
 ![](https://github.com/ds5010/vaccines/blob/bridget_dev_final/graph_over_time_Kent_and_Tuscaloosa.png)
 
 ## License
+This project is licensed under the MIT license, a copy of which can be found in the license file, but just to reiterate: 
+
+```
+```
 
 ## References
