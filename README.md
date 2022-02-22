@@ -49,6 +49,8 @@ scatter = ax.scatter(x, y, s=area, alpha=0.5)
 
 Which procudes the following scatterplot: 
 
+![](https://github.com/ds5010/vaccines/blob/bridget_dev_final/area_graph.png)
+
 If we wanted to look at data for how death rates change in relation to vaccination rates over a period of time (in this case from 1 May 2021 - 30 November 2021), we could run a program (graph_over_time.py) to do so: 
 
 ```
@@ -134,6 +136,7 @@ plt.show()
 ```
 
 Which would generate the following graph:
+
 
 Of course, looking only at a graph of the total deaths and vaccination rates across all counties (with available data) doesn't provide as clear a picture of vaccine effectiveness as we get if we also look at a comparison between two counties with similar population demographics but very different rates of vaccination. We can take two such counties, for example Kent County, RI and Tuscaloosa County, AL (graph_over_time_Kent_and_Tuscaloosa.py) and compare the number of deaths in relation to their differing vaccination percentages over the same May to November period we considered when looking at all the counties together: 
 
