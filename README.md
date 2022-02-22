@@ -3,21 +3,27 @@
 The DS5010 Vaccines project is a collaborative effort to explore the efficacy of vaccination as a response to the COVID-19 pandemic. 
 
 ## About the Data
+This project focuses on data for all the U.S counties for which relevant data was available, drawing from two different data sources, the CDC and Johns Hopkins University. 
 
 ### CDC Data
-Download and compress the CDC vaccination data
+The CDC data in its entirety can be found at https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh. As of the creation of this README it is updated daily and contains 53 columns, including (but not limited to) data on the number and percentage of different age demographics who are partially vaccinated, fully vaccinated, and boosted, as well as geographic identifiers and census information. For the purposes of this project, those 53 columns were reduced to just 6 (using clean_vaccines.py): 
 
-```
-make cdcdata
-```
+- FIPS (the unique string of digits used to identify each county)
+- Recip_County (the name of each county)
+- Recip_State (the name of the state each county is in)
+- Series_Complete_18Plus (the number of people 18 and older in each county who are fully vaccinated, defined as having recived both doses of a two dose vaccine or one does of a single dose vaccine, regardless of booster status)
+- Census2019_18PlusPop (the number of people in each county who were 18 or older according to the 2019 census)
+- Date (the month/day/year the data corresponds to)
 
-See Makefile for details.
+The FIPS data was included because it was a unique identifier that was also present in Johns Hopkins data tracking COVID deaths, making it easy to relate the vaccination data for a county to the death data for that same county. The name of each county and the corresponding state were included to make the data less abstract (as FIPS carries the same information as county and state names but isn't as easily understood) and to make it easier to look at specific geographic regions if one wanted to. The original dataset included a column for Series_Complete_18PlusPopPct that would have given the percent of people 18+ in each county who were fully vaccinated, but this would have made it trickier to calculate a statewide or nationwide percent if we were interested in that instead of a more specific county by county percent (which could still be calculated using these two columns of data, were that your druthers). The date was included so that changes could be tracked over time as the pandemic and the nation's response to it proceed. 
 
 ### JHU data
+The Johns Hopkins University data in its entirety can be found at https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports. As of the creation of this README it is updated daily and contains 14 columns, including (but not limited to), FIPS numbers, geographic information, and data on the number of people who had active COVID cases, had recovered from COVID, or had died from COVID. For the purposes of this project these 14 columns were reduced to just 2 (using deaths.py):
 
-TBD
+- FIPS (the unique string of digits used to identify each county)
+- Deaths (the number of COVID deaths in a county)
 
-### Merged Data
+The FIPS data was included to make this data easily compatible with the CDC data (which also includes FIPS), and the deaths data was included to allow for examination of how vaccination rates relate to death rates. 
 
 ## Examples
 For the purposes of these examples we're going to be working just with the subset of the population that is 18 and older since, at least in the window of time we're looking at, this is the group that was elligible for the vaccine for the entire duration. We can write a program (area_graph.py) to graph the number of deaths in relation to the percent of the population who was fully vaccinated (in this case defined as either having received both shots of a two shot vaccine or one shot of a single shot vaccine, not including booster shots), where the size of the dots being plotted is representative of the population of the county represented by that dot: 
@@ -230,6 +236,27 @@ This generates the following graph, which illustrates a very stark difference be
 This project is licensed under the MIT license, a copy of which can be found in the license file, but just to reiterate: 
 
 ```
+MIT License
+
+Copyright (c) 2022 ds5010
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
 ## References
