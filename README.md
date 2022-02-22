@@ -137,6 +137,7 @@ plt.show()
 
 Which would generate the following graph:
 
+![](https://github.com/ds5010/vaccines/blob/bridget_dev_final/graph_over_time.png)
 
 Of course, looking only at a graph of the total deaths and vaccination rates across all counties (with available data) doesn't provide as clear a picture of vaccine effectiveness as we get if we also look at a comparison between two counties with similar population demographics but very different rates of vaccination. We can take two such counties, for example Kent County, RI and Tuscaloosa County, AL (graph_over_time_Kent_and_Tuscaloosa.py) and compare the number of deaths in relation to their differing vaccination percentages over the same May to November period we considered when looking at all the counties together: 
 
@@ -221,7 +222,9 @@ ax2.tick_params(axis='y', labelcolor=color)
 fig.tight_layout()  # otherwise the right y-label is slightly clipped
 plt.show()
 ```
-This generates the following graph, which illustrates a very stark difference between the number of deaths in a county with high vaccination rates (Kent, RI) and the number of deaths in a county with low vaccination rates (Tuscaloosa, AL). 
+This generates the following graph, which illustrates a very stark difference between the number of deaths in a county with high vaccination rates (Kent, RI) and the number of deaths in a county with low vaccination rates (Tuscaloosa, AL):
+
+![](https://github.com/ds5010/vaccines/blob/bridget_dev_final/graph_over_time_Kent_and_Tuscaloosa.png)
 
 # produce a legend with a cross section of sizes from the scatter
 handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6, num=4)
