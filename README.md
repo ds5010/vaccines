@@ -22,4 +22,4 @@ make vaccinations-and-confirmed-11-30-2021.csv
 make VaccinedvsConfirmed.png
 ```
 
-<img width="601" alt="Screen Shot 2022-02-22 at 2 53 17 AM" src="https://user-images.githubusercontent.com/97610834/155086936-faa72ef4-8bd8-4c67-a9a2-0f550876fbad.png">
+![VaccinedvsConfirmed](https://user-images.githubusercontent.com/97610834/155234962-e94a39c9-fe02-4d4d-a6a0-96e5e91e4ed6.png)
