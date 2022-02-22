@@ -1,4 +1,3 @@
-from turtle import color
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -18,13 +17,13 @@ def plotit():
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     ax.set_xlim(0,200)
-    ax.set_ylim(0,10000)
+    ax.set_ylim(0,30000)
 
-    scatter = ax.scatter(x, y, color="blue", s=area, alpha=0.25)
+    scatter = ax.scatter(x, y, color='tab:blue', s=area, alpha=0.25)
 
     # produce a legend with a cross section of sizes from the scatter
     handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6, num=4)
-    ax.legend(handles, labels, loc="upper right", title="Vaccined vs Confirmed")
+    ax.legend(handles, labels, loc="upper right", title="Population(*10k)")
 
 
     plt.show()
