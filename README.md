@@ -1,6 +1,6 @@
 # ds5010/vaccines
 
-Collaborative project to investigate vaccine effectiveness
+The DS5010 Vaccines project is a collaborative effort to explore the efficacy of vaccination as a response to the COVID-19 pandemic. 
 
 ## About the Data
 
