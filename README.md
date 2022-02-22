@@ -226,11 +226,6 @@ This generates the following graph, which illustrates a very stark difference be
 
 ![](https://github.com/ds5010/vaccines/blob/bridget_dev_final/graph_over_time_Kent_and_Tuscaloosa.png)
 
-# produce a legend with a cross section of sizes from the scatter
-handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6, num=4)
-ax.legend(handles, labels, loc="upper right", title="Population Sizes (x10k)", labelspacing=2, borderpad=1); # Haven't figured out how to make the numbers from the legend different
-plt.show()
-
 ## License
 
 ## References
