@@ -232,6 +232,19 @@ This generates the following graph, which illustrates a very stark difference be
 
 ![](https://github.com/ds5010/vaccines/blob/bridget_dev_final/graph_over_time_Kent_and_Tuscaloosa.png)
 
+## Project Walkthrough
+To replicate the results presented in this README take the following steps: 
+1. Download repo. 
+2. Run clean_vaccines.py by entering ```python3 clean_vaccines.py``` in the command line terminal. This will take the COVID-19_Vaccinations_in_the_United_States_County.csv.gz file (which includes the CDC data from 1 May 2021 - 30 November 2021) from the data folder and pull out only 
+the six columns we want to preserve as outlined above. This will output a vaccines-cleaned.csv file. 
+3. Run months_vaccines.py by entering ```python3 months_vaccines.py``` in the command line terminal. This will take the vaccines-cleaned.csv file you just created and add a "Months" column with a string of the relevant month name for each row of data (making it easier to look at data month by month over time). This will create a vaccinations-cleaned-with-months.csv file. 
+4. Run deaths.py to get data for May 2021 by entering ```python3 deaths.py "05-01-2021" "05-31-2021``` in the command line terminal. This will create a file in the data folder called deaths-05-01-2021-05-31-2021.csv containing all the FIPS and death data for the month of May 2021 from the JHU data. Repeat this process, changing the start variable and end variable to be the first and last day of each subsequent month by changing the date strings entered in the command line terminal until you have files for May 2021 - November 2021. 
+5. Run merged_deaths.py by entering ```python3 merged_deaths.py``` to merge all the death files you just created and add a column with the relevant month for each row of data. This will output a file called merged_deaths.csv. 
+6. Run deaths_and_vaccines.py by entering ```python3 deaths_and_vaccines.py``` in the command line terminal. This will merge the vaccinations-cleaned-with-months.csv file of the CDC data we'll be working with with the merged_deaths.csv file of the JHU data we'll be working with. It will output a file named vaccinations_and_deaths_file.csv. 
+7. If you want to create the first graph shown in this README (the scatterplot where the different sized dots relate to the population size of the county they represent), enter ```python3 area_graph.py``` in the command line terminal. 
+8. If you want to create the second graph, showing the bar chart/line graph for vaccinations and deaths on a national scale, enter ```python3 graph_over_time.py``` in the command line terminal. 
+9. If you want to create the third graph, showing the bar chart/line graph comparing vaccinations and deaths specifically in Kent County, RI and Tuscaloosa County, AL enter ```python3 graph_over_time_Kent_and_Tuscaloosa.py``` in the command line terminal. 
+
 ## License
 This project is licensed under the MIT license, a copy of which can be found in the license file, but just to reiterate: 
 
@@ -258,7 +271,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
-## Project Walkthrough
-To replicate the results presented in this README take the following steps: 
-1. Download repo. 
