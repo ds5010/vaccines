@@ -3,7 +3,12 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize
 from matplotlib import cm
 
-def choropleth(df, column="Series_Complete_18PlusPop_Pct_slope", cmap="viridis"):
+
+'''
+chloropleth() creates a county map of the contiguous 48 states colored by the slope of the
+regression calculated using plot/regress_multiple()
+'''
+def choropleth(df, cmap="viridis", outfile=None):
     # load county shapes
     counties = gpd.read_file("../data/cb_2018_us_county_500k/cb_2018_us_county_500k.shp")
 
@@ -17,6 +22,7 @@ def choropleth(df, column="Series_Complete_18PlusPop_Pct_slope", cmap="viridis")
     merge = filtered_counties.merge(df, on="GEOID")
 
     # calculate the normalization and colormap so that we can use them
+    column="Series_Complete_18PlusPop_Pct_slope"
     norm = Normalize(vmin=merge[column].min(), vmax=merge[column].max())
     n_cmap = cm.ScalarMappable(norm=norm, cmap=cmap)
     
@@ -28,4 +34,8 @@ def choropleth(df, column="Series_Complete_18PlusPop_Pct_slope", cmap="viridis")
     # add the colorbar
     n_cmap.set_array([])
     ax.get_figure().colorbar(n_cmap, ax=ax, orientation='horizontal')
-    plt.show()
+    
+    if outfile:
+        fig.savefig(outfile)
+    else:
+        fig.show()

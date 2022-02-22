@@ -4,15 +4,27 @@ import numpy as np
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 
+
+'''
+filter() takes a dataframe and a dictionary of filters, then returns a
+dataframe containing the slice with only the filtered values
+'''
 def filter(df, filters):
     for filter, value in filters.items():
         print("Filtering by "+str(filter))
         df = df[df[filter] == value]
     return df
 
+
+'''
+compute_stats() adds several additional calculations to the dataframe
+'''
 def compute_stats(df):
+    # Calculate the number of deaths per 10,000 population
     df['Deaths_Per_1e5'] = df['Deaths'] / df['Census2019_18PlusPop'] * 1e5
+    # Add a GEOID column (which is backwards-compatible to FIPS)
     df["GEOID"] = df["FIPS"]
+    # Translate state code strings into CDC Regions
     regions = defaultdict(None) | {
         "CT": "Region 1",
         "ME": "Region 1",
@@ -69,14 +81,22 @@ def compute_stats(df):
     }
     df["CDC_Region"] = df["Recip_State"].copy()
     df["CDC_Region"] = df["CDC_Region"].apply(lambda x: regions[x])
+    #TODO add additional statistics here
     return df
 
 
+'''
+regress() performs a linear regression on a dataframe or slice and return the parameters
+'''
 def regress(subset, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5'):
     model = sm.WLS(subset[ylabel], sm.add_constant(subset[xlabel]), subset["Census2019_18PlusPop"])
     return model.fit().params
 
 
+'''
+regress_multiple() runs a series of linear regressions grouped by "column" and save the resulting parameters
+into a new pair of columns. By default, this function will run a linear regression for each state.
+'''
 def regress_multiple(df, xlabel = 'Series_Complete_18PlusPop_Pct', ylabel = 'Deaths_Per_1e5', column="Recip_State"):
     df[xlabel+"_const"] = pd.NA
     df[xlabel+"_slope"] = pd.NA
@@ -95,8 +115,11 @@ def regress_multiple(df, xlabel = 'Series_Complete_18PlusPop_Pct', ylabel = 'Dea
     return df
         
 
-def scatter(df, filters=None, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5'):
-    df = compute_stats(df)
+'''
+scatter() creates a scatter plot including datapoints scaled by population. It also shows a trendline
+and can be passed filters in the form of a dictionary.
+'''
+def scatter(df, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5', filters=None, outfile=None):
     titlestr = ylabel+" vs "+xlabel
     if filters:
         df = filter(df, filters)
@@ -123,9 +146,13 @@ def scatter(df, filters=None, xlabel='Series_Complete_18PlusPop_Pct', ylabel='De
     ax.legend(handles, labels, loc="upper right", title="2019 Census Population", labelspacing=1.0)
     
     # perform regression
-    p = regress(df, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5')
+    p = regress(df, xlabel=xlabel, ylabel=ylabel)
 
     # plot regression line on the same axes, set x-axis limits
     ax.plot(x, p.const + p[xlabel] * x)
-    plt.show()
+
+    if outfile:
+        fig.savefig(outfile)
+    else:
+        fig.show()
 
