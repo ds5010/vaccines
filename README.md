@@ -79,7 +79,7 @@ For example, running ```scatter(df)``` on the full dataset produces the followin
 
 scatter() also uses the filter_data(), making it easy to close in on a specific geographic region. ```scatter(df, filters={"CDC_Region":"Region 1"}, outfile="figs/CDC Region 1 Scatter Plot.png")``` produces the following result, showing data from the CDC's northeast region:
 
-![example scatter plot filtered by CDC Region 1](/figs/CDC_Region_1_Scatter_Plot.png")
+![example scatter plot filtered by CDC Region 1](/figs/CDC_Region_1_Scatter_Plot.png)
 
 ### ```choropleth```
 

@@ -7,11 +7,11 @@ deaths:
 	python -B src/deaths.py
 
 # Create a CSV from merged vaccines and deaths CSVs
-merge: deaths, vaccines
+merge:
 	python -B src/merge.py
 
 # Create sample figures
-figs: merge
+figs:
 	mkdir -p figs
 	python -B src/figs.py
 
