@@ -6,12 +6,12 @@ import statsmodels.api as sm
 
 
 '''
-filter() takes a dataframe and a dictionary of filters, then returns a
+filter_data() takes a dataframe and a dictionary of filters, then returns a
 dataframe containing the slice with only the filtered values
 '''
-def filter(df, filters):
+def filter_data(df, filters):
     for filter, value in filters.items():
-        print("Filtering by "+str(filter))
+        print("Filtering by "+str(filter)+" ("+value+")")
         df = df[df[filter] == value]
     return df
 
@@ -97,19 +97,20 @@ def regress(subset, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1
 regress_multiple() runs a series of linear regressions grouped by "column" and save the resulting parameters
 into a new pair of columns. By default, this function will run a linear regression for each state.
 '''
-def regress_multiple(df, xlabel = 'Series_Complete_18PlusPop_Pct', ylabel = 'Deaths_Per_1e5', column="Recip_State"):
-    df[xlabel+"_const"] = pd.NA
-    df[xlabel+"_slope"] = pd.NA
+def regress_multiple(df, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5', column="Recip_State"):
+    print("Regressing by "+column)
+    df[column+"_const"] = pd.NA
+    df[column+"_slope"] = pd.NA
     for value in df[column].unique():
         # print("Working on "+value)
         subset = df[df[column] == value]
         # print("Regressing over {} datapoints.".format(subset.shape[0]))
         # perform regression
-        p = regress(subset, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5')
+        p = regress(subset, xlabel=xlabel, ylabel=ylabel)
         try:
             # print(p)
-            df.loc[df[column] == value, xlabel+"_const"] = float(p.const)
-            df.loc[df[column] == value, xlabel+"_slope"] = float(p[xlabel])
+            df.loc[df[column] == value, column+"_const"] = float(p.const)
+            df.loc[df[column] == value, column+"_slope"] = float(p[xlabel])
         except AttributeError:
             continue
     return df
@@ -122,8 +123,8 @@ and can be passed filters in the form of a dictionary.
 def scatter(df, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5', filters=None, outfile=None):
     titlestr = ylabel+" vs "+xlabel
     if filters:
-        df = filter(df, filters)
-        titlestr = titlestr + ", filtered by "
+        df = filter_data(df, filters)
+        titlestr = titlestr + ",\n filtered by "
         for filter, value in filters.items():
             titlestr = titlestr+" "+filter+" ("+value+") "
 
@@ -141,7 +142,7 @@ def scatter(df, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5',
     scatter = ax.scatter(x, y, s=df['Census2019_18PlusPop']/1e4, alpha=0.25)
 
     # produce a legend with a cross section of sizes from the scatter
-    handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6, num=3, func=lambda x: np.log10(10000*x))
+    handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6, num=4, func=lambda x: np.log10(10000*x))
     labels = ["$10^"+label[1:] for label in labels]
     ax.legend(handles, labels, loc="upper right", title="2019 Census Population", labelspacing=1.0)
     

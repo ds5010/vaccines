@@ -8,9 +8,13 @@ from matplotlib import cm
 chloropleth() creates a county map of the contiguous 48 states colored by the slope of the
 regression calculated using plot/regress_multiple()
 '''
-def choropleth(df, cmap="viridis", outfile=None):
+def choropleth(df, cmap="viridis", column="Recip_State", outfile=None):
+    # create the new plot
+    fig, ax = plt.subplots()
+    fig.suptitle("Vaccine Effectiveness by\n"+column)
+
     # load county shapes
-    counties = gpd.read_file("../data/cb_2018_us_county_500k/cb_2018_us_county_500k.shp")
+    counties = gpd.read_file("data/cb_2018_us_county_500k/cb_2018_us_county_500k.shp")
 
     # filter out non-contiguous states (somewhat clumsily)
     filtered_counties = counties.copy()
@@ -20,16 +24,12 @@ def choropleth(df, cmap="viridis", outfile=None):
 
     # merge the datasets
     merge = filtered_counties.merge(df, on="GEOID")
-
     # calculate the normalization and colormap so that we can use them
-    column="Series_Complete_18PlusPop_Pct_slope"
+    column = column+"_slope"
     norm = Normalize(vmin=merge[column].min(), vmax=merge[column].max())
     n_cmap = cm.ScalarMappable(norm=norm, cmap=cmap)
     
-    # create the plot
-    fig, ax = plt.subplots()
-    fig.suptitle("Vaccine Effectiveness by State")
-    ax = merge.plot(column=column, cmap=cmap, ax=ax)
+    ax = merge.plot(column, cmap=cmap, ax=ax)
 
     # add the colorbar
     n_cmap.set_array([])
