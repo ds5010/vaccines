@@ -75,11 +75,11 @@ def scatter(df, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5',
 
 For example, running ```scatter(df)``` on the full dataset produces the following result:
 
-![example scatter plot](/figs/All FIPS Scatter Plot.png)
+![example scatter plot](/figs/All_FIPS_Scatter_Plot.png)
 
 scatter() also uses the filter_data(), making it easy to close in on a specific geographic region. ```scatter(df, filters={"CDC_Region":"Region 1"}, outfile="figs/CDC Region 1 Scatter Plot.png")``` produces the following result, showing data from the CDC's northeast region:
 
-![example scatter plot filtered by CDC Region 1]("figs/CDC Region 1 Scatter Plot.png")
+![example scatter plot filtered by CDC Region 1](/figs/CDC_Region_1_Scatter_Plot.png")
 
 ### ```choropleth```
 
@@ -88,10 +88,11 @@ As it turns out, once you have regression coefficients it becomes expedient to l
 df = regress_multiple(df) # defaults to state-by-state
 choropleth(df)
 ```
-![example choropleth by state](/figs/Regression by Recip_State Choropleth.png)
+![example choropleth by state](/figs/Regression_by_Recip_State_Choropleth.png)
 
 Visualizing the data this way highlights some... interesting results. To look at Florida, for example, we could run ```scatter(df, filters={"Recip_State": "FL"}``` and see that there seem to be unusually low death rates compared to overall:
-![example scatter filtered by state (florida)](/figs/Florida Scatter Plot.png)
+
+![example scatter filtered by state (florida)](/figs/Florida_Scatter_Plot.png)
 
 There could be perfectly good reasons for this. Perhaps Florida just got lucky. Or perhaps a government official there has ulterior motives for implementing policies that underreport death counts because they're considering a bid for the Republican presidential nomination. Perhaps.
 
@@ -100,4 +101,4 @@ Things look more reasonable if we repeat the regression on a regional level:
 df = regress_multiple(df, column="CDC_Region")
 choropleth(df, column="CDC_Region")
 ```
-![example choropleth by CDC region](/figs/Regression by CDC_Region Choropleth.png)
+![example choropleth by CDC region](/figs/Regression_by_CDC_Region_Choropleth.png)
