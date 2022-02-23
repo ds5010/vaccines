@@ -1,14 +1,28 @@
 # Want to know what's the vaccine effectiveness of your home county? check iy out!
+>*1.* Make sure US_data.csv is in your directory. This file take me long time to create. All things I done for it is in Folder Things_for_assignment5
+>*2.* go to file assignment5.py, make county_FIPS the county you want to check.
+>*3.* Run python assignment5.py
 
-### Concusion first, The vaccine effectiveness declines since July (I think delta start to spread at that time) but strengthed at the end of August .At the middle of November, It declines again(I think Omicron start to spread at that time ).  
-In last few days, I try to built a function to show vaccine effectiveness in particular counties.
-I don't have enought time to get all code sorted. But I will explain what I did for this.
+23005 Cumberland County (Portland,Maine)
+![output](https://github.com/ds5010/vaccines/blob/yune_branch/sceenshot/portland.png)
+25025 Suffolk County (Boston)
+![output](https://github.com/ds5010/vaccines/blob/yune_branch/sceenshot/boston.png)
+36061 New York County
+![output](https://github.com/ds5010/vaccines/blob/yune_branch/sceenshot/newyork.png)
+06037  Los Angeles county
+![output](https://github.com/ds5010/vaccines/blob/yune_branch/sceenshot/losangeles.png)
+06075 San Francisco County
+![output](https://github.com/ds5010/vaccines/blob/yune_branch/sceenshot/sanfrancisco.png)
+
+## Concusion 
+In most county, The vaccine effectiveness declines since July (I think delta start to spread at that time) but strengthed at the end of August .At the middle of November, It declines again(I think Omicron start to spread at that time ).  
+##What I do
 - First I need to show the time-evolution of vaccine effectiveness. I think the x axis should be time.
 - So for Y axis , I need some indicator to show effectiveness.Here's my solution 
 > vaccine effectiveness=daily diagnosis rate/vaccination rate
 > daily diagnosis rate=number of daily confimed/vaccination rate
  
-So Here's what I need to do 
+## Steps to do
 1. get all death and comfirm data from 05-01-2021 to 11-30-2021.
    - scratch all csv from https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports
    - use concat merge those the csv file from 5-01-2021 to 11-30-2021
