@@ -26,8 +26,7 @@ So Here's what I need to do
 
 
 
-#What I want to do for this project
-I want some thing for 23005,Cumberland County,ME
+
 #Welcome to Yune's branch
 ***On February 14, 1946, the world's first general-purpose computer was born at the University of Pennsylvania. Please accompany your computer on this special day.***
 ## Work Log
