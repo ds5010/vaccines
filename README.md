@@ -3,6 +3,7 @@
 >*2.* go to file assignment5.py, make county_FIPS the county you want to check.
 >*3.* Run python assignment5.py
 
+
 23005 Cumberland County (Portland,Maine)
 ![output](https://github.com/ds5010/vaccines/blob/yune_branch/sceenshot/portland.png)
 25025 Suffolk County (Boston)
@@ -20,7 +21,8 @@ In most county, The vaccine effectiveness declines since July (I think delta sta
 - First I need to show the time-evolution of vaccine effectiveness. I think the x axis should be time.
 - So for Y axis , I need some indicator to show effectiveness.Here's my solution 
 > vaccine effectiveness=daily diagnosis rate/vaccination rate
-> daily diagnosis rate=number of daily confimed/vaccination rate
+> daily diagnosis rate=（number of daily confimed）/（vaccination rate）
+> In the graph , I use reciprocal of vaccine effectiveness, so if the trend trop down that means vaccine effectiveness increase.
  
 ## Steps to do
 1. get all death and comfirm data from 05-01-2021 to 11-30-2021.
