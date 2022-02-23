@@ -24,12 +24,85 @@ In most county, The vaccine effectiveness declines since July (I think delta sta
  
 ## Steps to do
 1. get all death and comfirm data from 05-01-2021 to 11-30-2021.
-   - scratch all csv from https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports
-   - use concat merge those the csv file from 5-01-2021 to 11-30-2021
-   - Offset the death data , because the time of  update of the death data is on the second day
-   - Modify the date ,We just need to be accurate to the day，remove the hour minute seconds in death data 
-   - Filter the data without a FIPS
+   - scratch all csv from https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports .
+```python
+import requests
+import re
+from bs4 import BeautifulSoup
+import wget
+
+# URL on the Github where the csv files are stored
+# change USERNAME, REPOSITORY and FOLDER with actual name
+github_url = 'https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports'
+
+result = requests.get(github_url)
+with open('/Users/mac/csse_covid_19_daily_reports', 'r') as f:
+    soup = BeautifulSoup(f, 'html.parser')
+
+csvfiles = soup.find_all(title=re.compile("\.*csv$"))
+filename = []
+for i in csvfiles:
+    filename.append(i.extract().get_text())
+# get a list like this ['01-01-2021.csv', '01-01-2022.csv', '01-02-2021.csv', '01-02-2022.csv', '01-03-2021.csv', '01-03-2022.csv', '01-04-2021.csv', '01-04-2022.csv', '01-05-2021.csv', '01-05-2022.csv', '01-06-2021.csv', '01-06-2022.csv', '01-07-2021.csv', '01-07-2022.csv', '01-08-2021.csv', '01-08-2022.csv', '01-09-2021.csv', '01-09-2022.csv', '01-10-2021.csv', '01-10-2022.csv', '01-11-2021.csv', '01-11-2022.csv', '01-12-2021.csv', '01-12-2022.csv', '01-13-2021.csv', '01-13-2022.csv', '01-14-2021.csv', '01-14-2022.csv', '01-15-2021.csv', '01-15-2022.csv', '01-16-2021.csv', '01-16-2022.csv', '01-17-2021.csv', '01-17-2022.csv', '01-18-2021.csv', '01-18-2022.csv', '01-19-2021.csv', '01-19-2022.csv', '01-20-2021.csv', '01-
+
+base = "https://raw.githubusercontent.com/"
+base += "CSSEGISandData/COVID-19/master/csse_covid_19_data/"
+base += "csse_covid_19_daily_reports/"
+download_list = []
+for i in filename:
+    download_list.append(base+i)
+print(download_list[0])
+# 👆🏻 get list like this ['https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/01-01-2021.csv', 'https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/01-01-2022.csv',
+for url in download_list:
+    wget.download(url, '/Users/mac/dead_data')
+# use wget to down load
+```
+   - use concat to merge those the csv file from 5-01-2021 to 11-30-2021. I use glob module and regular expression here. 
+```python
+import glob
+import pandas as pd
+a = glob.glob('../../dead_data/[0][5-9]*-*-2021.csv')
+b = glob.glob('../../dead_data/[1][0-1]*-*-2021.csv')
+may_to_novenmber = a+b
+print(a+b)
+may_to_novenmber = sorted(may_to_novenmber)
+final_data = pd.concat(
+    map(pd.read_csv, may_to_novenmber,), ignore_index=True)
+# 删选掉FIPS ==nan的，这个时候 final_data.FIPS.dtype== float64
+final_data = final_data[final_data['FIPS'].isna() == False]
+final_data
+final_data['FIPS'] = final_data['FIPS'].astype('int')
+# final_data.FIPS.dtype
+final_data.to_csv('final_data.csv', index=False)
+
+```
+   - Modify the date ,We just need to be accurate to the day，remove the hour minute seconds in death data .Offset the death data , because the time of  update of the death data is on the second day. Use to_dict to tranform the dataframe into a dictionary instead of using df.iterrows(), to_dict is much faster if you are play with large volumn data
+```python
+import pandas as pd
+death = pd.read_csv('final_data.csv', converters={'FIPS': str})
+# Turn the death dataframe into a dictionary
+dict_copy = death.to_dict('records')
+for r in dict_copy:
+    if len(r['FIPS']) == 4:
+        r['FIPS'] = '0'+r['FIPS']
+death2 = pd.DataFrame.from_dict(dict_copy)
+death2.to_csv('final_data.csv', index=False)
+
+```
+   - Filter the data without a FIPS, use .isna()
    - make some four digital fips to 5 digital
+```python
+import pandas as pd
+death = pd.read_csv('final_data.csv', converters={'FIPS': str})
+# Turn the death dataframe into a dictionary
+dict_copy = death.to_dict('records')
+for r in dict_copy:
+    if len(r['FIPS']) == 4:
+        r['FIPS'] = '0'+r['FIPS']
+death2 = pd.DataFrame.from_dict(dict_copy)
+death2.to_csv('final_data.csv', index=False)
+
+```
 
 2.merge the death data with vaccine rate data ,use date and fips 
 - This takes quite a while,But if we make the dataframe into a dictionary and modify the data on the dictionary then we transform the dictionary back to a dataframe, that will be much faster.
