@@ -2,9 +2,16 @@
 vaccines:
 	python -B src/vaccines.py
 
-# Create CSV with JHU data
+# Create CSVs with JHU data
 deaths:
-	python -B src/deaths.py
+	python -B src/deaths.py	
+#python3 -B src/deaths.py jun
+#python3 -B src/deaths.py jul
+#python3 -B src/deaths.py aug
+#python3 -B src/deaths.py sep
+#python3 -B src/deaths.py oct
+#python3 -B src/deaths.py nov
+#python3 -B src/deaths.py nov30
 
 merged:
 	python -B src/combinedata.py
