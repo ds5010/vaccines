@@ -30,14 +30,14 @@ fig, ax = plt.subplots(figsize=(15,7))
 
 df.groupby('Month')['Death_Pct'].mean().plot(ax=ax)
 ax.set(xlabel="Month", ylabel="% of Total Pop Deaths")
-plt.title("% of Total Pop. Deaths Over Time (Aug - Sep 2021)")
+plt.title("% of Total Pop. Deaths Over Time (May - Nov 2021)")
 
 #[MR] Plot fully vaccinated 18+ as a percentage of total population over time (Aug - Sep 2021)
 fig, ax = plt.subplots(figsize=(15,7)) 
 
 df.groupby('Month')['Series_Complete_18PlusPop_Pct'].mean().plot(ax=ax)
 ax.set(xlabel="Month", ylabel="% of Total Pop 18+ Vaccinated")
-plt.title("% of 18+ Vaccinated Over Time (Aug - Sep 2021)")
+plt.title("% of 18+ Vaccinated Over Time (May - Nov 2021)")
 
 ##[MR] Plot fully vaccinated 18+ as a percentage of total population against deaths as a percentage of total population over time (Aug - Sep 2021)
 fig, ax1 = plt.subplots(figsize=(15,7))  
@@ -54,7 +54,7 @@ ax2.set_ylabel('% of Population Deaths', color = 'green')
 plot_2 = df.groupby('Month')['Death_Pct'].mean().plot(ax=ax2, color = "green")
 ax2.tick_params(axis ='y', labelcolor = 'green') 
 
-plt.title("% of 18+ Vaccinated Vs. % of Pop. Deaths Over Time (Aug - Sep 2021)")
+plt.title("% of 18+ Vaccinated Vs. % of Pop. Deaths Over Time (May - Nov 2021)")
 
 
 plt.show()
