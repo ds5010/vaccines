@@ -33,7 +33,7 @@ def choropleth(df, cmap="viridis", column="Recip_State", outfile=None):
 
     # add the colorbar
     n_cmap.set_array([])
-    ax.get_figure().colorbar(n_cmap, ax=ax, orientation='horizontal')
+    ax.get_figure().colorbar(n_cmap, ax=ax, orientation='horizontal', label="Change in Deaths per 1e5 for each % vaccinated")
     
     if outfile:
         fig.savefig(outfile)
