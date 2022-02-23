@@ -1,3 +1,4 @@
+import gzip
 def readit(filename):
     """
     Read and parse CSV -- read entire file all at once.
