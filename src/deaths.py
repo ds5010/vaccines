@@ -2,7 +2,7 @@ import pandas as pd
 
 def time_sample(end_date):
   # Dates for filename
-  start = "05-01-2021"
+  start = f'{int(end_date[:2])-1:02d}' +end_date[2:]
 
   def readit(end_date):
     # Read CSV while keeping FIPS as a string

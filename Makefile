@@ -1,14 +1,10 @@
-# Create CSV with sampled CDC data
-vaccines:
-	python -B src/vaccines.py
 
-# Create CSV with JHU data
-deaths:
-	python -B src/deaths.py
+single_plot:
+	python -B src/plotter.py
 
-merged:
-	python -B src/combinedata.py
-
+time_plot:
+	python -B src/time_plotter.py
+	
 # Download and compress the CDC data
 cdc:
 	mkdir -p data
