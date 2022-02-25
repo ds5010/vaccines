@@ -156,4 +156,3 @@ def scatter(df, xlabel='Series_Complete_18PlusPop_Pct', ylabel='Deaths_Per_1e5',
         fig.savefig(outfile)
     else:
         fig.show()
-
