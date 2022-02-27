@@ -16,7 +16,7 @@ See Makefile for details.
 
 TBD
 
-##TEMPORARY SECTION:
+## TEMPORARY SECTION
 
 If you would like to test my code, please run the python script:
 ```
