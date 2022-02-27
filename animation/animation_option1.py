@@ -15,7 +15,7 @@ def create_gif(files,filename_save):
     iio.mimsave(filename_save,images,duration = 1)
 
 #user changes these manually
-files = ['img/3_may_placeholder.png','img/2_aug_placeholder.png','img/1_nov_placeholder.png']
+files = ['img/1_may_placeholder.png','img/2_aug_placeholder.png','img/3_nov_placeholder.png']
 
 if __name__ == "__main__":
     create_gif(files,'img/animation.gif')
