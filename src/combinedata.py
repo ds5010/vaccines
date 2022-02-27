@@ -1,15 +1,22 @@
-import pandas as pd
-import deaths
-import vaccines
+'''
+example code to join dataframes
+merge_by_FIPS doesn't need to be it's own file; it's just calling .join on two data frames
+'''
+
+from deaths import death_sample
+from vaccines import vaccine_sample
 
 
 def merge_by_FIPS(desired_date):
-    deaths_df = deaths.time_sample(desired_date)
-    vaccines_df = vaccines.time_sample(desired_date)
+    # get dataframes with FIPS as indices
+    deaths_df = death_sample(desired_date)
+    vaccines_df = vaccine_sample(desired_date)
+    # how=inner specifies that only the intersection of each dataframe will be used.
     merged = deaths_df.join(vaccines_df, how='inner')
-    print(merged)
     return merged
-    
+
+
+# main function is for testing only 
 def main():
     merge_by_FIPS('11-30-2021')
 
