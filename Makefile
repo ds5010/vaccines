@@ -17,3 +17,6 @@ cdc:
 
 scatters:
 	python -B src/scatters.py
+
+test:
+	python -B src/test.py
