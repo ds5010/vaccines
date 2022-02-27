@@ -1,10 +1,17 @@
 import pandas as pd
+import deaths
+import vaccines
 
-# learn about merging dataframes at https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html
-def merge_by_FIPS(vaccinations_file, deaths_file, outfile=None):
-    vaccinations = pd.read_csv(vaccinations_file)
-    deaths = pd.read_csv(deaths_file)
-    merged = vaccinations.merge(deaths, on="FIPS", sort=True)
-    if outfile:
-        merged.to_csv(outfile, index=False)
+
+def merge_by_FIPS(desired_date):
+    deaths_df = deaths.time_sample(desired_date)
+    vaccines_df = vaccines.time_sample(desired_date)
+    merged = deaths_df.join(vaccines_df, how='inner')
+    print(merged)
     return merged
+    
+def main():
+    merge_by_FIPS('11-30-2021')
+
+if __name__=='__main__':
+    main()

@@ -1,8 +1,9 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import combinedata
 
 def sctplt(end_date):
-    df = pd.read_csv('data/vaccinations-and-deaths-'+end_date+'.csv', converters={'FIPS' : str})
+    df = combinedata.merge_by_FIPS(end_date)
     df['Deaths_Per_1e5'] = df['Deaths'] / df['Census2019_18PlusPop'] * 1e5
 
     xlabel = 'Series_Complete_18PlusPop_Pct'
@@ -19,6 +20,7 @@ def sctplt(end_date):
     plt.ylabel('County Covid Deaths per 10k')
     plt.xlim(0,100)
     plt.ylim(0,400)
+    plt.show()
     plt.savefig('img/'+ end_date + '.jpg')
     
 def main():

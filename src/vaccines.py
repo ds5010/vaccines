@@ -1,27 +1,28 @@
 # Sample one date from the source dataset and write it to an intermediate file
 import pandas as pd
 
-def time_sample(desired_date):
+def time_sample(desired_date, cols = ["Series_Complete_18PlusPop_Pct", "Census2019_18PlusPop"]):
     # Source data
     input_filename = "./data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz"
-    df = pd.read_csv(input_filename, compression="gzip", converters={'FIPS' : str})
-    print("START:", df.shape)
+    df = pd.read_csv(input_filename, index_col='FIPS', compression="gzip")
+    print("Total vaccine rows, cols:", df.shape)
 
     # Filter by date
     filter = desired_date.replace('-','/')
     df = df[df["Date"] == filter]
 
     # Extract columns of interest
-    columns = ["FIPS", "Recip_County", "Recip_State", "Series_Complete_18PlusPop_Pct", "Census2019_18PlusPop"]
-    df = df[columns]
+    df = df[cols]
 
-    # Clean the dataset (removes 62 rows for 11/30/2021)
-    print("BEFORE:", df.shape)
+    # Clean the dataset
+    print("Total " + filter + " rows, cols:", df.shape)
     df = df.dropna()
-    print("AFTER:", df.shape)
+    print("Valid " + filter + " rows, cols:", df.shape)
+    df.sort_index()
+    return df
 
-    # Output
-    output_filename = "./data/vaccinations-" + desired_date + ".csv"
+def main():
+    time_sample('11-30-2021')
 
-    # Write filtered dataframe to a file
-    df.to_csv(output_filename, index=False)
+if __name__=='__main__':
+    main()

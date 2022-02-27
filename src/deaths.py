@@ -2,38 +2,30 @@ import pandas as pd
 
 def time_sample(end_date):
   # Dates for filename
-  start = f'{int(end_date[:2])-1:02d}' +end_date[2:]
+  # must keep leading zeros for url to work
+  # start is one month prior end date
+  #start = f'{str(int(end_date[:2])-1):02d}' +end_date[2:]
+  start_date = '05-30-2021'
 
-  def readit(end_date):
-    # Read CSV while keeping FIPS as a string
-    # Base URL for JHU data repo
+  def readit(end_date, col = ['FIPS','Deaths']):
+    # URL for JHU data repo
     address ="https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" + end_date +'.csv'
-    df = pd.read_csv(address, converters={'FIPS' : str})
-    df.dropna() # This doesn't do anything because missing data are not NaN when FIPS is read as a string
-    return df[df['FIPS'] != ""] # This eliminates rows without a FIPS (i.e., foreign countries)
+    df = pd.read_csv(address, usecols= col)
+    # Drop missing FIPS
+    df = df[df['FIPS'].notna()]
+    # Change FIPS from INT64 to formatted string
+    df['FIPS'] = df['FIPS'].apply(lambda x: f'{x:05.0f}')
+    df.set_index('FIPS',inplace=True)
+    return df
 
-  data = {}
+  start_df = readit(start_date)
+  end_df = readit(end_date)
+  change = end_df.sub(start_df,fill_value=0)
+  print(change)
+  return change
+  
+def main():
+    time_sample('11-30-2021')
 
-  df_deaths = readit(end_date)
-  for i, row in df_deaths.iterrows():
-    fips = row['FIPS']
-    if len(fips) == 4:
-      fips = "0" + fips
-    data[fips] = row["Deaths"]
-
-  df_deaths = readit(start)
-  for i, row in df_deaths.iterrows():
-    fips = row['FIPS']
-    if len(fips) == 4:
-      fips = "0" + fips
-    data[fips] -= row["Deaths"]
-
-  # Write dictionary to a CSV file
-  filename = "data/deaths-" + \
-            start[:2] + '-' + start[3:5] + "-" + start[6:10] + "-to-" + \
-            end_date + '.csv'
-
-  with open(filename, 'w') as file:
-    file.write("FIPS,Deaths\n") # header
-    for key, value in data.items():
-      file.write(",".join([key, str(value)]) + "\n")
+if __name__=='__main__':
+    main()
