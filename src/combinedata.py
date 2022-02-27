@@ -18,7 +18,7 @@ def merge_by_FIPS(desired_date):
 
 # main function is for testing only 
 def main():
-    merge_by_FIPS('11-30-2021')
+    print(merge_by_FIPS('11-30-2021'))
 
 if __name__=='__main__':
     main()

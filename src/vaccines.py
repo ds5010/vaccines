@@ -26,7 +26,7 @@ def vaccine_sample(desired_date, cols = ["Series_Complete_18PlusPop_Pct", "Censu
 
 # main function is for testing only 
 def main():
-    vaccine_sample('11-30-2021')
+    print(vaccine_sample('11-30-2021'))
 
 if __name__=='__main__':
     main()

@@ -30,7 +30,7 @@ def death_sample(end_date):
 
 # main function is for testing only 
 def main():
-    death_sample('11-30-2021')
+    print(death_sample('11-30-2021'))
 
 if __name__=='__main__':
     main()
