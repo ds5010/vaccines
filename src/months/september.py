@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def september():
-    df_sep = pd.read_csv('data/vaccinations-and-deaths-09-01-2021', converters={'FIPS' : str})
+    df_sep = pd.read_csv('data/vaccinations-and-deaths-09-01-2021.csv', converters={'FIPS' : str})
     df_sep['Deaths_Per_1e5'] = df_sep['Deaths'] / df_sep['Census2019_18PlusPop'] * 1e5
 
     xlabel = 'Series_Complete_18PlusPop_Pct'
@@ -28,4 +28,4 @@ def september():
     # produce a legend with a cross section of sizes from the scatter
     handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6, num=4)
     ax.legend(handles, labels, loc="upper right", title="Population Sizes (x10k)", labelspacing=2, borderpad=1); 
-    plt.savefig('sep.jpg')
+    plt.savefig('img/sep.png')

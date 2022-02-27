@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def october():
-    df_oct = pd.read_csv('data/vaccinations-and-deaths-10-01-2021', converters={'FIPS' : str})
+    df_oct = pd.read_csv('data/vaccinations-and-deaths-10-01-2021.csv', converters={'FIPS' : str})
     df_oct['Deaths_Per_1e5'] = df_oct['Deaths'] / df_oct['Census2019_18PlusPop'] * 1e5
 
     xlabel = 'Series_Complete_18PlusPop_Pct'
@@ -28,4 +28,4 @@ def october():
     # produce a legend with a cross section of sizes from the scatter
     handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6, num=4)
     ax.legend(handles, labels, loc="upper right", title="Population Sizes (x10k)", labelspacing=2, borderpad=1); # Haven't figured out how to make the numbers from the legend different
-    plt.savefig('oct.jpg')
+    plt.savefig('img/oct.png')
