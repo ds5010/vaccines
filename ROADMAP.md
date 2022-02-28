@@ -1,30 +1,58 @@
 
 # Roadmap
+*Updated 2/24 for completion by 2/29*  
+[Link to in-class Google doc](https://docs.google.com/document/d/1p1ru7QAT71t3leCCaC_e88HN7AwzkLz-vohalUIci04/edit)
+## Core Tasks
+We want to focus on creating a finished product first, which has been discussed and decided as a series of scatterplots combined into an animation. Once core task are accomplished, we can jump into the list of possible enhancements at the end. But it doesn't hurt to keep those enhancements in mind while implementing the core tasks.
 
-* CDC data
-  * Goal: Download and compress a file with the vaccine data
-  * Rationale: The source CDC CSV is ~250M and constantly updated. We'll keep a stable version for reproducibility.
-  * Status: DONE
-    * Data downloaded 14 Feb is ~250M before compression, and almost 100M after gzip
-  * Command: `make cdc` (see Makefile for details)
-* Vaccine data
-  * Goal: Create a CSV from the gzipped CDC data containing values needed for the baseline analysis.
-  * Rationale: Our baseline for county-level vaccinations is "Series_Complete_18PlusPop_Pct" as of 11/30/2021
-    * Fields: FIPS, Recip_County, Recip_State, Series_Complete_18PlusPop_Pct, Census2019_18PlusPop
-  * Status: DONE
-    * Output file: "./data/vaccines-11-30-2021.csv"
-  * Command: `make vaccines` (see Makefile for details)
-* Deaths data
-  * Goal: Sample the JHU data and create a CSV with only those values used in the baseline analysis.
-  * Rationale: Our baseline is the total number of deaths by county between May 1 and Nov 30, 2021
-    * Fields: FIPS, deaths
-  * Status: DONE
-  * Command: `make deaths` (see Makefile for details)
-* Merge data
-  * Goal: A function that reads and merges the vaccine and deaths data, returning a single dataframe
-  * Rationale: merged data used for EDA, including the baseline scatterplot
-  * Status: Unknown
-* Scatterplot
-  * Goal: scatterplot of deaths/100K vs vaccination status for each county
-  * Rationale: this will be a baseline data visualization
-  * Status: Unknown
+### Possible Roadmap, working back from the desired result:
+1. Animation function reads images in a folder and creates animation
+2. Scatterplot function loops through dates and calls merge function to plot combined data and save to img folder
+3. Merge Function calls CDC and JHU functions then combines their dataframes by FIPS
+4. CDC and JHU functions handle downloading and trimming the data so they're ready to merge 
+
+* #### CDC Data - Connor & Jerry  
+  * Takes **desired date** arguments
+  * Work to remove all hardcoded dates and links
+  * returns a dataframe for merge function  
+
+* #### JHU Data - Yune & Jerry
+  * Takes **end date** and **start date** arguments
+  * Work to remove all hardcoded dates and links
+  * returns a dataframe for merge function
+
+* #### Merge - Tim & Yune
+  * Takes **end date** and **start date** arguments
+  * Remove hard coded dates as much as possible
+  * Communicate with the CDC and JHU folks to call their functions within merge
+  * Try the dataframes merge option that Prof. Bogden mentioned
+  * If the dataframes merge doesn't happen, we can revert back to writing intermediate vaccine-only & deaths-only csv files to the data folder and using the existing merge code
+  * returns dataframe for scatterplot function
+
+* #### Scatterplot - Matt & Kayne
+  * Create a scatterplot with the dataframe from Merge
+  * Plot Vaccination rate on x-axis, Deaths per 10k on y-axis, population of county as dot size
+  * Create img folder
+  * Create multiple plots over time and save to img folder
+
+* #### Time Sequence + Animation - Sophia & Bridget
+  * Create gif/video using contents of img folder
+  * Use [imagio](https://github.com/imageio/imageio) -- github
+  * Save or play the animation? 
+
+* #### README - Matt & Kayne
+  * Tell a story about what we're trying to show with this repo
+  * Give instructions for reproducability
+  * Give attribution/references, use authoritative sources
+  * Keep it concise; assume a sophisticed audience
+
+* #### Clean up Repo - Philip
+  * Update Makefile too?
+
+
+## Enhancements
+* Regression Line on scatterplot
+* Informative legend on scatterplot
+* Optional arguments for column names in vaccines.py and deaths.py
+* Using color as additional dimension in scatterplot
+
