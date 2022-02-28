@@ -16,14 +16,14 @@ def readit(filename):
     # This eliminates rows without a FIPS (i.e., foreign countries)
     return df[df['FIPS'] != ""]
 
-    """This is a function that returns the death number from start_date to end_date
+    """This is a function that returns the death number from start_date to end_date, and create a csv file in data 
     Parameters: 
         start_date:str , write it in form "05-01-2021.csv",
         end_date: str,
     """
 
 
-def get_death_number_JHU(start_date, end_date):
+def get_death_number_JHU(start, end):
     data = {}
 
     df_deaths = readit(end)
@@ -65,7 +65,7 @@ def get_death_number_JHU(start_date, end_date):
     """
 
 
-def get_confirm_number_JHU(start_date, end_date):
+def get_confirm_number_JHU(start, end):
     data = {}
 
     df_confirmed = readit(end)
@@ -100,3 +100,20 @@ def get_confirm_number_JHU(start_date, end_date):
 # start = "05-01-2021.csv"
 # end = "06-30-2021.csv"
 # get_confirm_number_JHU(start, end)
+
+    """This function write death number into 7 csv file.
+    If you don't want to wast time to input augument to create csv file for every month please run following function
+    """
+
+
+def create_death_number_JHU():
+    get_death_number_JHU("05-01-2021.csv", "05-31-2021.csv")
+    get_death_number_JHU("05-01-2021.csv", "06-30-2021.csv")
+    get_death_number_JHU("05-01-2021.csv", "07-31-2021.csv")
+    get_death_number_JHU("05-01-2021.csv", "08-31-2021.csv")
+    get_death_number_JHU("05-01-2021.csv", "09-30-2021.csv")
+    get_death_number_JHU("05-01-2021.csv", "10-31-2021.csv")
+    get_death_number_JHU("05-01-2021.csv", "11-30-2021.csv")
+
+
+# create_death_number_JHU()
