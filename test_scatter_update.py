@@ -70,6 +70,8 @@ def scatter(month):
     #[MR] Creates population legend
     handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6)
     plt.legend(handles, labels, loc=(1.03,0.3), title="Population", labelspacing=0.90, borderpad=1)
+    
+    plt.savefig('test_img/'+month+'.png')
     plt.show()
 
 scatter('10-01-2021')
