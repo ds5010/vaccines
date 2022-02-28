@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 
-"""This function return a dataframe that contains merge data.
+"""This function return a dataframe that contains merge data. scatterplot team can use it to get the dataframe they want
+But they need to make sure that the csv ready to merge in the ..data/JHU and ..data/CDC
 parameter: 
 date : The last date of each month.  form date = "11-30-2021"
 """
