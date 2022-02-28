@@ -16,7 +16,7 @@ def readit(filename):
     # This eliminates rows without a FIPS (i.e., foreign countries)
     return df[df['FIPS'] != ""]
 
-    """This is a function that returns the death number from start_date to end_date, and create a csv file in data 
+    """This is a function that returns a dataframe that contain Fips and the death number from start_date to end_date, and create a csv file in data 
     Parameters: 
         start_date:str , write it in form "05-01-2021.csv",
         end_date: str,
@@ -41,7 +41,7 @@ def get_death_number_JHU(start, end):
         data[fips] -= row["Deaths"]
 
     # Write dictionary to a CSV file
-    filename = "../data/deaths-" + \
+    filename = "../data/JHU/deaths-" + \
                start[:2] + '-' + start[3:5] + "-" + start[6:10] + "-to-" + \
                end[:2] + '-' + end[3:5] + "-" + end[6:]
 
@@ -102,6 +102,7 @@ def get_confirm_number_JHU(start, end):
 # get_confirm_number_JHU(start, end)
 
     """This function write death number into 7(month) csv file, each file document death number from 05-01 to the end of this month
+    Please create a JHU file in ../data First, Or this function will give error. 
     If you don't want to wast time to input augument to create csv file for every month please run following function
     """
 
