@@ -1,29 +1,32 @@
-# Sample one date from the source dataset and write it to an intermediate file
+'''
+vaccine_sample reads the g-zipped cdc data
+desired_date 'mm-dd-yyyy', only keep rows containing this date
+cols an optional parameter list of names of columns we keep
+'''
 import pandas as pd
 
-# Source data
-input_filename = "./data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz"
-df = pd.read_csv(input_filename, compression="gzip", converters={'FIPS' : str})
-print("START:", df.shape)
+def vaccine_sample(desired_date, cols = ["Series_Complete_18PlusPop_Pct", "Census2019_18PlusPop"]):
+    # Source data
+    input_filename = "./data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz"
+    df = pd.read_csv(input_filename, index_col='FIPS', compression='gzip')
+    print("Total vaccine rows, cols:", df.shape)
 
-# Date to extract from file
-desired_date = '11/30/2021'
+    # Filter by date
+    filter = desired_date.replace('-','/')
+    df = df[df["Date"] == filter]
 
-# Filter by date
-df = df[df["Date"] == desired_date]
+    # Extract columns of interest
+    df = df[cols]
 
-# Extract columns of interest
-columns = ["FIPS", "Recip_County", "Recip_State", "Series_Complete_18PlusPop_Pct", "Census2019_18PlusPop"]
-df = df[columns]
+    # Clean the dataset
+    print("Total " + filter + " rows, cols:", df.shape)
+    df = df.dropna()
+    print("Valid " + filter + " rows, cols:", df.shape)
+    return df
 
-# Clean the dataset (removes 62 rows for 11/30/2021)
-print("BEFORE:", df.shape)
-df = df.dropna()
-print("AFTER:", df.shape)
+# main function is for testing only 
+def main():
+    print(vaccine_sample('11-30-2021'))
 
-# Output
-output_filename = "./data/vaccinations-" + desired_date[:2] + '-' + \
-                  desired_date[3:5] + "-" + desired_date[6:11] + ".csv"
-
-# Write filtered dataframe to a file
-df.to_csv(output_filename, index=False)
+if __name__=='__main__':
+    main()

@@ -1,41 +1,36 @@
+'''
+deaths contains two functions:
+readit pulls the data from github for the given date, returns dataframe
+deathsample computes the difference between death figures for the two dates, returns dataframe
+'''
 import pandas as pd
 
-# Dates for filename
-start = "05-01-2021.csv"
-end = "11-30-2021.csv"
+def readit(end_date, col = ['FIPS','Deaths']):
+  address ="https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" + end_date +'.csv'
+  df = pd.read_csv(address, usecols= col)
+  
+  # Drop missing FIPS
+  df = df[df['FIPS'].notna()]
+  
+  # Change FIPS from INT64 to formatted string
+  df['FIPS'] = df['FIPS'].apply(lambda x: f'{x:05.0f}')
+  df.set_index('FIPS',inplace=True)
+  
+  return df
 
-def readit(filename):
-  # Read CSV while keeping FIPS as a string
-  # Base URL for JHU data repo
-  base ="https://raw.githubusercontent.com/"
-  base += "CSSEGISandData/COVID-19/master/csse_covid_19_data/"
-  base += "csse_covid_19_daily_reports/"
-  df = pd.read_csv(base + filename, converters={'FIPS' : str})
-  df.dropna() # This doesn't do anything because missing data are not NaN when FIPS is read as a string
-  return df[df['FIPS'] != ""] # This eliminates rows without a FIPS (i.e., foreign countries)
+def death_sample(end_date):
+  # must keep leading zeros for url to work
+  start_date = '05-30-2021'
 
-data = {}
+  start_df = readit(start_date)
+  end_df = readit(end_date)
+  change = end_df.sub(start_df,fill_value=0)
+  return change
 
-df_deaths = readit(end)
-for i, row in df_deaths.iterrows():
-  fips = row['FIPS']
-  if len(fips) == 4:
-    fips = "0" + fips
-  data[fips] = row["Deaths"]
 
-df_deaths = readit(start)
-for i, row in df_deaths.iterrows():
-  fips = row['FIPS']
-  if len(fips) == 4:
-    fips = "0" + fips
-  data[fips] -= row["Deaths"]
+# main function is for testing only 
+def main():
+    print(death_sample('11-30-2021'))
 
-# Write dictionary to a CSV file
-filename = "data/deaths-" + \
-           start[:2] + '-' + start[3:5] + "-" + start[6:10] + "-to-" + \
-           end[:2] + '-' + end[3:5] + "-" + end[6:]
-
-with open(filename, 'w') as file:
-  file.write("FIPS,Deaths\n") # header
-  for key, value in data.items():
-    file.write(",".join([key, str(value)]) + "\n")
+if __name__=='__main__':
+    main()
