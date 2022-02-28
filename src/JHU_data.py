@@ -101,7 +101,7 @@ def get_confirm_number_JHU(start, end):
 # end = "06-30-2021.csv"
 # get_confirm_number_JHU(start, end)
 
-    """This function write death number into 7 csv file.
+    """This function write death number into 7(month) csv file, each file document death number from 05-01 to the end of this month
     If you don't want to wast time to input augument to create csv file for every month please run following function
     """
 
@@ -116,4 +116,4 @@ def create_death_number_JHU():
     get_death_number_JHU("05-01-2021.csv", "11-30-2021.csv")
 
 
-# create_death_number_JHU()
+create_death_number_JHU()
