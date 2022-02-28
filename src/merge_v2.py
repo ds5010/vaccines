@@ -28,18 +28,22 @@ def merge_v2(date):
 parameter: 
 date : The last date of each month.  form date = "11-30-2021"
 """
+
+
 def write_merge_data_to_csv(date):
     base_Merge = "../data/Merge/"
-    df = merge_v1(date)
-    df.to_csv(base_Merge+"vaccinations-and-deaths-"+date+'.csv',index=False)
+    df = merge_v2(date)
+    print(df)
+    df.to_csv(base_Merge+"vaccinations-and-deaths-"+date+'.csv', index=False)
 
 
 # test case 2
-# date = "11-30-2021"
+# date = "05-31-2021"
 # write_merge_data_to_csv(date)
 """This function write 7 csvs to directory data/Merge. 
 
 """
+
 
 def create_merge_data():
     write_merge_data_to_csv("05-31-2021")
@@ -49,4 +53,6 @@ def create_merge_data():
     write_merge_data_to_csv("09-30-2021")
     write_merge_data_to_csv("10-31-2021")
     write_merge_data_to_csv("11-30-2021")
-    
+
+
+create_merge_data()
