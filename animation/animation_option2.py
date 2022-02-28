@@ -11,12 +11,10 @@ def create_gif(filename_save):
     #makes a list of im NumPy arrays based on a list of .png images (read from folder)
     images = list()
 
-    #this part looks at the img directory and reads in all the files that end with g (only going to bring in the .pngs)
+    #this part looks at the img directory and reads in all the files that end with .png (only going to bring in those)
     for filename in sorted(os.listdir('img')):
-        print(filename)
         if filename[-4:] == '.png':
             f = os.path.join('img',filename)
-            print(f)
             im = iio.imread(f)
             images.append(im)
 
