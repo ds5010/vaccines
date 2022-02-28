@@ -14,7 +14,7 @@ def create_gif(filename_save):
     #this part looks at the img directory and reads in all the files that end with g (only going to bring in the .pngs)
     for filename in sorted(os.listdir('img')):
         print(filename)
-        if filename[-1] == 'g':
+        if filename[-4:] == '.png':
             f = os.path.join('img',filename)
             print(f)
             im = iio.imread(f)
