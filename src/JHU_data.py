@@ -57,3 +57,46 @@ def get_death_number_JHU(start_date, end_date):
 # start = "05-01-2021.csv"
 # end = "06-30-2021.csv"
 # get_JHU_data(start, end)
+
+    """This is a function that returns the confirmed number from start_date to end_date
+    Parameters: 
+        start_date:str , write it in form "05-01-2021.csv",
+        end_date: str,
+    """
+
+
+def get_confirm_number_JHU(start_date, end_date):
+    data = {}
+
+    df_confirmed = readit(end)
+    for i, row in df_confirmed.iterrows():
+        fips = row['FIPS']
+        if len(fips) == 4:
+            fips = "0" + fips
+        data[fips] = row["Confirmed"]
+    # print(data)
+    df_confirmed = readit(start)
+    for i, row in df_confirmed.iterrows():
+        fips = row['FIPS']
+        if len(fips) == 4:
+            fips = "0" + fips
+        data[fips] -= row["Confirmed"]
+
+    # Write dictionary to a CSV file
+    filename = "../data/confirmed-" + \
+               start[:2] + '-' + start[3:5] + "-" + start[6:10] + "-to-" + \
+               end[:2] + '-' + end[3:5] + "-" + end[6:]
+
+    with open(filename, 'w') as file:
+        file.write("FIPS,Confirmed\n")  # header
+        for key, value in data.items():
+            file.write(",".join([key, str(value)]) + "\n")
+    df = pd.read_csv(filename)
+    print()
+    return df
+
+
+# test case 02
+# start = "05-01-2021.csv"
+# end = "06-30-2021.csv"
+# get_confirm_number_JHU(start, end)
