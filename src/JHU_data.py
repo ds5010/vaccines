@@ -56,4 +56,4 @@ def get_death_number_JHU(start_date, end_date):
 # test case 01
 # start = "05-01-2021.csv"
 # end = "06-30-2021.csv"
-get_JHU_data(start, end)
+# get_JHU_data(start, end)
