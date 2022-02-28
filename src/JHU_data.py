@@ -1,8 +1,8 @@
 import pandas as pd
 
 # Dates for filename
-start = "05-01-2021.csv"
-end = "06-30-2021.csv"
+# start = "05-01-2021.csv"
+# end = "06-30-2021.csv"
 
 
 def readit(filename):
@@ -53,4 +53,7 @@ def get_death_number_JHU(start_date, end_date):
     return df
 
 
+# test case 01
+# start = "05-01-2021.csv"
+# end = "06-30-2021.csv"
 get_JHU_data(start, end)
