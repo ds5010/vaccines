@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 def scatter(month):
-    df = pd.read_csv('data/vaccinations-and-deaths-'+month+'.csv', converters={'FIPS' : str})
+    df = pd.read_csv('data/Merge/vaccinations-and-deaths-'+month+'.csv', converters={'FIPS' : str})
     df['Deaths_Per_1e5'] = df['Deaths'] / df['Census2019_18PlusPop'] * 1e5
 
     xlabel = 'Series_Complete_18PlusPop_Pct'
@@ -45,10 +45,10 @@ def scatter(month):
     plt.tight_layout()    
     plt.savefig('img/'+month+'.png')
 
-scatter('06-01-2021')
-scatter('07-01-2021')
-scatter('08-01-2021')
-scatter('09-01-2021')
-scatter('10-01-2021')
-scatter('11-01-2021')
+scatter('05-31-2021')
+scatter('06-30-2021')
+scatter('07-31-2021')
+scatter('08-31-2021')
+scatter('09-30-2021')
+scatter('10-31-2021')
 scatter('11-30-2021')

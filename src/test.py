@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 
 def scatter(month):
-    df = pd.read_csv('data/merged/vaccinations-and-deaths-'+month+'.csv', converters={'FIPS' : str})
+    df = pd.read_csv('data/Merge/vaccinations-and-deaths-'+month+'.csv', converters={'FIPS' : str})
     df['Deaths_Per_1e5'] = df['Deaths'] / df['Census2019_18PlusPop'] * 1e5
 
     xlabel = 'Series_Complete_18PlusPop_Pct'
