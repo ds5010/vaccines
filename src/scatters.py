@@ -15,7 +15,7 @@ def scatter(month):
 
     x = df[xlabel]
     y = df[ylabel]
-    area = df['Census2019_18PlusPop'] / 1e3     #size of bubble = # of 10Ks in county)
+    area = df['Census2019_18PlusPop'] / 1e4     #size of bubble = # of 10Ks in county
 
     fig, ax = plt.subplots()
     ax.set_xlabel("Percent of Population (+18) Considered Fully Vaccinated")
@@ -40,7 +40,7 @@ def scatter(month):
 
     #[MR] Creates population legend
     handles, labels = scatter.legend_elements(prop="sizes", num=4, alpha=0.4)
-    plt.legend(handles, labels, loc=(1.05,0.3), title="Population (000s)", labelspacing=6, borderpad=3.25)
+    plt.legend(handles, labels, loc=(1.05,0.3), title="Population (0000s)", labelspacing=2, borderpad=1)
 
     plt.tight_layout()    
     plt.savefig('img/'+month+'.png')
