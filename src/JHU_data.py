@@ -12,7 +12,7 @@ def readit(filename):
     base += "CSSEGISandData/COVID-19/master/csse_covid_19_data/"
     base += "csse_covid_19_daily_reports/"
     df = pd.read_csv(base + filename, converters={'FIPS': str})
-    df.dropna()  # This doesn't do anything because missing data are not NaN when FIPS is read as a string
+    # df.dropna()  # This doesn't do anything because missing data are not NaN when FIPS is read as a string
     # This eliminates rows without a FIPS (i.e., foreign countries)
     return df[df['FIPS'] != ""]
 
@@ -29,19 +29,15 @@ def get_death_number_JHU(start, end):
     df_deaths = readit(end)
     for i, row in df_deaths.iterrows():
         fips = row['FIPS']
-        if len(fips) == 4:
-            fips = "0" + fips
         data[fips] = row["Deaths"]
     # print(data)
     df_deaths = readit(start)
     for i, row in df_deaths.iterrows():
         fips = row['FIPS']
-        if len(fips) == 4:
-            fips = "0" + fips
         data[fips] -= row["Deaths"]
 
     # Write dictionary to a CSV file
-    filename = "../data/JHU/deaths-" + \
+    filename = "data/JHU/deaths-" + \
                start[:2] + '-' + start[3:5] + "-" + start[6:10] + "-to-" + \
                end[:2] + '-' + end[3:5] + "-" + end[6:]
 
@@ -83,7 +79,7 @@ def get_confirm_number_JHU(start, end):
         data[fips] -= row["Confirmed"]
 
     # Write dictionary to a CSV file
-    filename = "../data/confirmed-" + \
+    filename = "data/confirmed-" + \
                start[:2] + '-' + start[3:5] + "-" + start[6:10] + "-to-" + \
                end[:2] + '-' + end[3:5] + "-" + end[6:]
 
