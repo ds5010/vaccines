@@ -1,4 +1,4 @@
-#Kayne Ryan
+#Kayne Ryan and Matt Ray
 #DS5010 Spring 2022
 
 #test.py -- enhancing scatterplot design
