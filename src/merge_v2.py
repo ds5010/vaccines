@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 
 """
 This function return a dataframe that contains merge data. It use dataframes merge option that Prof. Bogden mentioned
