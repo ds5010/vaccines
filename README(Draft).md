@@ -7,14 +7,18 @@ The goal of this analysis is to explore the relationship between Covid-19 vaccin
 
 Data related to Covid-19 vaccinations was sourced from the Center For Disease Control and Prevention (CDC) and data related to Covid-19 deaths was sourced from Johns Hopkins University (JHU).
 
-CDC Data
+**CDC Data**
 ```
 https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh
 ```
 
-Johns Hopkins University Data
+**Johns Hopkins University Data**
 ```
 https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e7282b480c8
 ```
 
 ## Running The Code 
+
+## Output
+
+## Analysis
