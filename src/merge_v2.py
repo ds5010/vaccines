@@ -1,8 +1,10 @@
 import pandas as pd
 import numpy as np
 
-"""This function return a dataframe that contains merge data. scatterplot team can use it to get the dataframe they want
-But they need to make sure that the csv ready to merge in the ..data/JHU and ..data/CDC
+"""
+This function return a dataframe that contains merge data. It use dataframes merge option that Prof. Bogden mentioned
+scatterplot team can use it to get the dataframe they want
+But please make sure that the csv to merge are already in in the ..data/JHU and ..data/CDC
 parameter: 
 date : The last date of each month.  form date = "11-30-2021"
 """
@@ -42,6 +44,7 @@ def write_merge_data_to_csv(date):
 # date = "05-31-2021"
 # write_merge_data_to_csv(date)
 """This function write 7 csvs to directory data/Merge. 
+Please make sure that the csv to merge are already in in the ..data/JHU and ..data/CDC
 
 """
 
