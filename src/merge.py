@@ -1,27 +1,24 @@
-import pandas as pd
-import numpy as np
+'''
+example code to join dataframes
+merge_by_FIPS doesn't need to be it's own file; it's just calling .join on two data frames
+'''
 
-def merge():
-    base = "./data/"
-    df = pd.read_csv(base + "vaccinations-11-30-2021.csv", converters={'FIPS' : str})
-    deaths = pd.read_csv(base + "deaths-05-01-2021-to-11-30-2021.csv", converters={'FIPS' : str})
-    
-    ## Add the deaths data to the dataframe
-    df['Deaths'] = None
-    bad = 0
-    for i, row in df.iterrows():
-        fips = row.FIPS
-        try:
-          df.loc[i, 'Deaths'] = deaths.loc[deaths.FIPS == fips].iloc[0,1]
-        except:
-          bad += 1
-          print(bad, "Couldn't find deaths for FIPS:", fips, row.FIPS, row.Recip_County, row.Recip_State)
-    
-    print("BEFORE:", df.shape)
-    df = df.dropna()
-    print("AFTER:", df.shape)
-    return df
+from deaths import death_sample
+from vaccines import vaccine_sample
 
-df = merge()
 
-df.to_csv("data/merge.csv")
+def merge_by_FIPS(desired_date):
+    # get dataframes with FIPS as indices
+    deaths_df = death_sample(desired_date)
+    vaccines_df = vaccine_sample(desired_date)
+    # how=inner specifies that only the intersection of each dataframe will be used.
+    merged = deaths_df.join(vaccines_df, how='inner')
+    return merged
+
+
+# main function is for testing only 
+def main():
+    print(merge_by_FIPS('11-30-2021'))
+
+if __name__=='__main__':
+    main()
