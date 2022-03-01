@@ -41,3 +41,7 @@ scatters:
 # Create single scatterplot and show in window
 test:
 	python -B src/test.py
+
+animation: img/*.png
+	python -B src/animation_option2.py
+
