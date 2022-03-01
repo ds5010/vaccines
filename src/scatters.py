@@ -2,22 +2,6 @@
 #DS5010 Spring 2022
 #scatters.py -- uses dataframes to create a series of scatter plots
 
-# from months.june import *
-# from months.july import *
-# from months.august import *
-# from months.september import *
-# from months.october import *
-# from months.november import *
-# from months.nov30 import *
-
-# june()
-# july()
-# august()
-# september()
-# october()
-# november()
-# nov30()
-
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -30,21 +14,36 @@ def scatter(month):
 
     x = df[xlabel]
     y = df[ylabel]
-    area = df['Census2019_18PlusPop'] / 1e4
+    area = df['Census2019_18PlusPop'] / 1e3     #size of bubble = # of 10Ks in county)
 
     fig, ax = plt.subplots()
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
+    ax.set_xlabel("Percent of Population (+18) Considered Fully Vaccinated")
+    ax.set_ylabel("Deaths per 100K")
     ax.set_xlim(0,100)
     ax.set_ylim(0,500)
-    fig.set_size_inches(8,8)
+    ax.set_title("Vaccine Effectiveness Snapshot as of: "+ month)
+    fig.set_size_inches(8,6)
 
-    scatter = ax.scatter(x, y, s=area, alpha=0.5)
+    #[MR] Added color dictionary by region
+    colors = {'AL':'blue','AK':'gold','AZ':'gold','AR':'blue','CA':'gold','CO':'gold','CT':'red','DE':'blue','DC':'blue','FL':'blue','GA':'blue','HI':'gold','ID':'gold','IL':'green','IN':'green','IA':'green','KS':'green','KY':'blue','LA':'blue','ME':'red','MD':'blue','MA':'red','MI':'green','MN':'green','MS':'blue','MO':'green','MT':'gold','NE':'green','NV':'gold','NH':'red','NJ':'red','NM':'gold','NY':'red','NC':'blue','ND':'green','OH':'green','OK':'blue','OR':'gold','PA':'red','RI':'red','SC':'blue','SD':'green','TN':'blue','TX':'blue','UT':'gold','VT':'red','VA':'blue','WA':'gold','WV':'blue','WI':'green','WY':'gold','PR':'blue'}
+    #[MR] Added region dictionary to align color legend
+    regions = {'South':'blue','West':'gold','Northeast':'red','Midwest':'green'}
+    
+    #[MR] Added color to reflect region based on state
+    scatter = ax.scatter(x, y, s=area, alpha=0.5,c=df['Recip_State'].map(colors), edgecolor='white')
 
-    # produce a legend with a cross section of sizes from the scatter
-    handles, labels = scatter.legend_elements(prop="sizes", alpha=0.6, num=4)
-    ax.legend(handles, labels, loc="upper right", title="Population Sizes (x10k)", labelspacing=2, borderpad=1); 
+    #[MR] Creates fake line to use index for second legend
+    markers = [plt.Line2D([0,0],[0,0],color=color, marker='o', linestyle='') for color in regions.values()]
+    leg = plt.legend(markers, regions.keys(), numpoints=1, loc=(1.05,0), title="Region")
+    ax.add_artist(leg)
+
+    #[MR] Creates population legend
+    handles, labels = scatter.legend_elements(prop="sizes", num=4, alpha=0.4)
+    plt.legend(handles, labels, loc=(1.05,0.3), title="Population (000s)", labelspacing=6, borderpad=3.25)
+    
+    plt.tight_layout()
     plt.savefig('img/'+month+'.png')
+    
 
 scatter('06-01-2021')
 scatter('07-01-2021')
