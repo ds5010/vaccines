@@ -34,3 +34,10 @@ merge_v2: data/JHU/ data/CDC/
 make clean:
 	rm -r data
 
+# Create series of scatter plots, save .png files to 'img' directory
+scatters:
+	python -B src/scatters.py
+
+# Create single scatterplot and show in window
+test:
+	python -B src/test.py
