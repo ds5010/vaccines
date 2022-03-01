@@ -1,32 +1,39 @@
-'''
-vaccine_sample reads the g-zipped cdc data
-desired_date 'mm-dd-yyyy', only keep rows containing this date
-cols an optional parameter list of names of columns we keep
-'''
+# Sample one date from the source dataset and write it to an intermediate file
 import pandas as pd
 
-def vaccine_sample(desired_date, cols = ["Series_Complete_18PlusPop_Pct", "Census2019_18PlusPop"]):
-    # Source data
+# Source data
+def vaccines(desired_date):
     input_filename = "./data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz"
-    df = pd.read_csv(input_filename, index_col='FIPS', compression='gzip')
-    print("Total vaccine rows, cols:", df.shape)
+    df = pd.read_csv(input_filename, compression="gzip", converters={'FIPS' : str})
+    print("START:", df.shape)
+    
 
     # Filter by date
-    filter = desired_date.replace('-','/')
-    df = df[df["Date"] == filter]
+    df = df[df["Date"] == desired_date]
 
     # Extract columns of interest
-    df = df[cols]
+    columns = ["FIPS", "Recip_County", "Recip_State", "Series_Complete_18PlusPop_Pct", "Census2019_18PlusPop"]
+    df = df[columns]
 
-    # Clean the dataset
-    print("Total " + filter + " rows, cols:", df.shape)
+    # Clean the dataset (removes 62 rows for 11/30/2021)
+    print("BEFORE:", df.shape)
     df = df.dropna()
-    print("Valid " + filter + " rows, cols:", df.shape)
+    print("AFTER:", df.shape)
+
+    # Output
+    output_filename = "./data/CDC/vaccinations-" + desired_date[:2] + '-' + \
+                    desired_date[3:5] + "-" + desired_date[6:11] + ".csv"
+
+    # Write filtered dataframe to a file
+    df.to_csv(output_filename, index=False)
     return df
 
-# main function is for testing only 
-def main():
-    print(vaccine_sample('11-30-2021'))
-
-if __name__=='__main__':
-    main()
+def Vaccines_all():
+    vaccines('05/31/2021')
+    vaccines('06/30/2021')
+    vaccines('07/31/2021')
+    vaccines('08/31/2021')
+    vaccines('09/30/2021')
+    vaccines('10/31/2021')
+    vaccines('11/30/2021')
+Vaccines_all()
