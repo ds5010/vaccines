@@ -20,3 +20,7 @@ scatters:
 
 test:
 	python -B src/test.py
+
+gif:
+	python -B src/vaxgif.py
+	
