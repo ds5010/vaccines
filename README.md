@@ -25,6 +25,8 @@ https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e72
 
 A [Makefile](./Makefile) has been created to streamline code compilation. To execute, clone the vaccines repository to your local drive & run the makefile outlined below.
 
+_Note: If you would prefer to skip steps 1-5 (saving time but not directly accessing the authoritative data sources), clone the ```main_with_data``` branch._
+
 1. Create a data directory:
 ```
 make data
@@ -46,11 +48,11 @@ make deaths
 ```
 make merge
 ```
-5. Create a time series of scatter plots and save .png files to the 'img' directory
+6. Create a time series of scatter plots and save .png files to the 'img' directory
 ```
 make scatters
 ```
-6. Generate an animation using the plots generated above
+7. Generate an animation using the plots generated above
 ```
 make animation
 ```
