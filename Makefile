@@ -7,8 +7,7 @@ data:
 	mkdir -p data
 
 # Download and compress the CDC data
-cdc:
-	mkdir -p data
+cdc: data/
 	curl -o data/COVID-19_Vaccinations_in_the_United_States_County.csv https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD
 	gzip data/COVID-19_Vaccinations_in_the_United_States_County.csv
 
@@ -37,7 +36,7 @@ test:
 	python -B src/test.py
 
 # Combine generated png's to make an animation
-animation: img/*.png
+animation: scatters img/*.png
 	python -B src/animation_option2.py
 
 make clean:
