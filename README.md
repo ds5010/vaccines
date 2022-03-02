@@ -1,6 +1,6 @@
-# Exploring Covid-19 Vaccine Effectiveness
+# Exploring COVID-19 Vaccine Effectiveness
 
-![alt text](https://github.com/ds5010/vaccines/raw/MatthewjRay_Assigment05/Screen%20Shot%202022-03-01%20at%208.40.31%20AM%20(1).jpg)
+![](img/animation.gif)
 
 ## Overview 
 This analysis aims to explore the relationship between Covid-19 vaccinations and deaths attributed to Covid-19 in the U.S. between 5/31/21 - 11/30/21 to analyze the effectiveness of the Covid-19 vaccination over time.
@@ -23,62 +23,47 @@ https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e72
 
 ## Running The Code 
 
-A [makefile](https://github.com/ds5010/vaccines/blob/026e1fcd37258919abd97fb9b69afcb1156bfb90/Makefile) has been created to streamline code compilation.  
-To execute, clone the vaccines repotitory to local drive & run the makefile outlined below. 
+A [Makefile](./Makefile) has been created to streamline code compilation. To execute, clone the vaccines repository to your local drive & run the makefile outlined below.
 
-Create a data directory.
+1. Create a data directory:
 ```
-datadir:
-	mkdir -p data
+make data
 ```
-Download and compress the CDC data.
+2. Download and compress the CDC data.
 ```
-cdc: data/
-	curl -o data/COVID-19_Vaccinations_in_the_United_States_County.csv https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD
-	gzip data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz
+make cdc
 ```
-Create a CSV file CDC vaccinations data.
+3. Create a CSV file with sampled CDC data.
 ```
-vaccines: data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz
-	mkdir -p data/CDC
-	python -B src/vaccines.py
+make vaccines
 ```
-Create CSV file for JHU deaths data.
+4. Download deaths data from JHU and create CSV files
 
 ```
-deaths: data/
-	mkdir -p data/JHU
-	python -B src/JHU_data.py
+make deaths
 ```
-Merge the CDC vaccination dataset with the JHU deaths dataset and clean dataset to remove non U.S. data.
+5. Merge the CDC vaccination dataset with the JHU deaths dataset and clean the dataset to remove non U.S. data.
 ```
-merge_v1:
-	python -B src/merge.py
+make merge
+```
+5. Create a time series of scatter plots and save .png files to the 'img' directory
+```
+make scatters
+```
+6. Generate an animation using the plots generated above
+```
+make animation
+```
 
-merge_v2: data/JHU/ data/CDC/
-	mkdir -p data/Merge
-	python -B src/merge_v2.py
+Additionally, the make file allows you to:
+* Do all of the above with one command by running ```make all```
+* Create a single scatter plot for EDA purposes with ```make test```
+* Delete the data and img directories to start fresh with ```make clean```
 
-make clean:
-	rm -r data
-```
-Create series of scatter plots, save .png files to 'img' directory
-```
-scatters:
-	python -B src/scatters.py
-```
-Create single scatterplot and an animated time series of vaccinated % of population vs deaths per 100,000.
-```
-test:
-	python -B src/test.py
-
-animation: img/*.png
-	python -B src/animation_option2.py
-```
 
 ## Output
-
-![](https://github.com/ds5010/vaccines/raw/MatthewjRay_Assigment05/animation.gif)
+Assuming all is well, the output should look something like this:
+![](img/animation.gif)
 
 ## Analysis
 
