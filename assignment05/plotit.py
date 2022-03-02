@@ -28,7 +28,7 @@ def plotit(months):
     ax.legend(handles, labels, loc="upper right", title="Population(*10k)")
 
 
-    plt.show()
+    #plt.show()
     plt.savefig('./assignment05/img/'+ months +'.png')
 
 plotit("May")
