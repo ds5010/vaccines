@@ -82,7 +82,7 @@ animation: img/*.png
 
 ## Analysis
 
-From the output, we can see that as 
+As a more significant percentage of the population becomes vaccinated, deaths increase over time. However, this does not consider the increase in Covid-19 cases over the same time period. Regionally, the South has a much lower vaccination rate among its population but a much higher increase in deaths, indicating that the opposite may be true. As a more significant percentage of a population becomes vaccinated, deaths trend downward.  Overall, there is much more to uncover within the data and areas for additional exploration.
 
 ## Future Considerations
 
