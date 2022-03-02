@@ -69,8 +69,15 @@ Assuming all is well, the output should look something like this:
 
 ## Analysis
 
-As a more significant percentage of the population becomes vaccinated, deaths increase over time. However, this does not consider the increase in Covid-19 cases over the same time period. Regionally, the South has a much lower vaccination rate among its population but a much higher increase in deaths, indicating that the opposite may be true. As a more significant percentage of a population becomes vaccinated, deaths trend downward.  Overall, there is much more to uncover within the data and areas for additional exploration.
 
+The proportion of the population that is vaccinated increases over the time frame, which you can see as the bubbles move from left to right. The quantity of deaths increases as well month-by-month, which makes sense: more deaths accumulate each month while the denominator (the 2019 Census population) stays the same. We also know that the Delta variant hit during this time period, which was much more contagious than previous strains: we should expect deaths to increase.  
+  
+However, consider the trajectories of the large bubbles (representing highly populous counties) vs. their smaller counterparts. The largest bubbles progress steadily into the 70-80% vaccinated range by the end of the timeframe, and their rate of deaths generally tops out at 100 deaths/100K people. Many smaller bubbles struggle to reach the 50% vaccinated mark, and several of their death rates soar into the 300-400 deaths/100K range. Comparing these two groups suggest that vaccination is highly effective--otherwise the more highly-populated areas would likely have similar (or even worse) death rates, given the physical proximity of the population in these urban centers.   
+  
+Regional differences prove to be fertile ground for continued research. Many of the small blue dots, representing counties in the South, don't reach the 50% vaccinated threshold. However, the large blue bubbles (representing urban areas in the South) follow a more direct left-to-right trajectory--and tellingly, keep their death rates low.  
+  
+These findings suggest that rural vs. urban differences or differences in political ideology may affect vaccine adoption--but they offer little doubt that the COVID vaccines are effective at minimizing the death toll of the virus. 
+  
 ## Future Considerations
 
 **Dataset**  
