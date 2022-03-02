@@ -1,17 +1,16 @@
+# Do everything (except test)
+all: data cdc vaccines deaths merge scatters animation
 
-single_plot:
-	python -B src/plotter.py
-
-time_plot:
-	python -B src/time_plotter.py
-
-datadir:
+# Make the data directory
+.PHONY: data # lets us use "make data" even though data/ is also a directory
+data:
 	mkdir -p data
 
 # Download and compress the CDC data
-cdc: data/
+cdc:
+	mkdir -p data
 	curl -o data/COVID-19_Vaccinations_in_the_United_States_County.csv https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD
-	gzip data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz
+	gzip data/COVID-19_Vaccinations_in_the_United_States_County.csv
 
 # Create CSV with sampled CDC data
 vaccines: data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz
@@ -23,25 +22,23 @@ deaths: data/
 	mkdir -p data/JHU
 	python -B src/JHU_data.py
 
-# Create a CSV from merged vaccines and deaths CSVs
-merge_v1:
-	python -B src/merge.py
-
-merge_v2: data/JHU/ data/CDC/
+# Create the merged datasets
+merge: data/JHU/ data/CDC/
 	mkdir -p data/Merge
 	python -B src/merge_v2.py
 
-make clean:
-	rm -r data
-
 # Create series of scatter plots, save .png files to 'img' directory
 scatters:
+	mkdir -p img
 	python -B src/scatters.py
 
 # Create single scatterplot and show in window
 test:
 	python -B src/test.py
 
+# Combine generated png's to make an animation
 animation: img/*.png
 	python -B src/animation_option2.py
 
+make clean:
+	rm -r data img
