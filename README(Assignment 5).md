@@ -36,13 +36,13 @@ The final output from class, gives us a good overall look at the Covid-19 data b
 
 ###  Cumulative Scatter Plot by Region
 
-Having the FIPS codes allowed the data to be coded by state and region, presenting a different look into the data set. Broken down by region, the South has a lower vaccination rate in many of its counties  and much higher number of deaths than other regions. 
+Having the FIPS codes allowed the data to be coded by state and region, presenting a different look into the data set. Broken down by region, the South has a lower vaccination rate in many of its counties and much higher number of deaths than other regions. 
 
 ![alt text](https://github.com/ds5010/vaccines/raw/MatthewjRay_Assigment05/Screen%20Shot%202022-03-01%20at%207.09.46%20PM.png)
 
 ### Time Series
 
-As data from the beginning (May), middle (Aug), and end (Nov) of the time period are compared, it is clear that both % of population 18+ vaccinated and # of Covid deaths have both increased. However, this data set does not take into account the increase in Covid cases during this timeframe either. Overall, this has given us a good start to look at Covid-19 vaccination effectiveness, but more analysis can be performced to gain additional insights. 
+As data from the beginning (May), middle (Aug), and end (Nov) of the time period is compared, we can see that overall, the vaccine is effective. As a greater percentage of the population becomes vaccinated the number of deaths declines. 
 
 ![alt text](https://github.com/ds5010/vaccines/raw/MatthewjRay_Assigment05/Screen%20Shot%202022-03-01%20at%207.10.10%20PM.png)
 ![alt text](https://github.com/ds5010/vaccines/raw/MatthewjRay_Assigment05/Screen%20Shot%202022-03-01%20at%207.11.32%20PM.png)
