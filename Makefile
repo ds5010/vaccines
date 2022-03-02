@@ -39,5 +39,6 @@ test:
 animation: scatters img/*.png
 	python -B src/animation_option2.py
 
-make clean:
+# Remove image and data directories
+clean:
 	rm -r data img
