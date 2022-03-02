@@ -7,22 +7,32 @@ time_plot:
 
 datadir:
 	mkdir -p data
+
 # Download and compress the CDC data
-cdc: datadir
+cdc: data/
 	curl -o data/COVID-19_Vaccinations_in_the_United_States_County.csv https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD
-	gzip data/COVID-19_Vaccinations_in_the_United_States_County.csv
-# Create a CSV from merged vaccines and deaths CSVs
-merge:
-	python -B src/merge.py
+	gzip data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz
 
 # Create CSV with sampled CDC data
-vaccines:
+vaccines: data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz
+	mkdir -p data/CDC
 	python -B src/vaccines.py
 
 # Create CSV with JHU data
-deaths: datadir
+deaths: data/
 	mkdir -p data/JHU
 	python -B src/JHU_data.py
+
+# Create a CSV from merged vaccines and deaths CSVs
+merge_v1:
+	python -B src/merge.py
+
+merge_v2: data/JHU/ data/CDC/
+	mkdir -p data/Merge
+	python -B src/merge_v2.py
+
+make clean:
+	rm -r data
 
 # Create series of scatter plots, save .png files to 'img' directory
 scatters:
@@ -31,3 +41,7 @@ scatters:
 # Create single scatterplot and show in window
 test:
 	python -B src/test.py
+
+animation: img/*.png
+	python -B src/animation_option2.py
+

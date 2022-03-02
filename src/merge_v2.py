@@ -10,8 +10,8 @@ date : The last date of each month.  form date = "11-30-2021"
 
 
 def merge_v2(date):
-    base_CDC = "../data/CDC/"
-    base_JHU = "../data/JHU/"
+    base_CDC = "data/CDC/"
+    base_JHU = "data/JHU/"
     df = pd.read_csv(base_CDC + "vaccinations-" + date + ".csv",
                      converters={'FIPS': str})
     deaths = pd.read_csv(
@@ -33,7 +33,7 @@ date : The last date of each month.  form date = "11-30-2021"
 
 
 def write_merge_data_to_csv(date):
-    base_Merge = "../data/Merge/"
+    base_Merge = "data/Merge/"
     df = merge_v2(date)
     print(df)
     df.to_csv(base_Merge+"vaccinations-and-deaths-"+date+'.csv', index=False)
