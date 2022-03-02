@@ -37,7 +37,7 @@ test:
 
 # Combine generated png's to make an animation
 animation: scatters img/*.png
-	python -B src/animation_option2.py
+	python -B src/animation.py
 
 # Remove image and data directories
 clean:
