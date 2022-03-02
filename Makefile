@@ -36,7 +36,7 @@ test:
 	python -B src/test.py
 
 # Combine generated png's to make an animation
-animation: scatters img/*.png
+animation: scatters
 	python -B src/animation.py
 
 # Remove image and data directories
