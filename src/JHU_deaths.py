@@ -1,4 +1,3 @@
-from tracemalloc import start
 import pandas as pd
 
 # Dates for filename
@@ -15,7 +14,7 @@ def readit(filename):
   df.dropna() # This doesn't do anything because missing data are not NaN when FIPS is read as a string
   return df[df['FIPS'] != ""] # This eliminates rows without a FIPS (i.e., foreign countries)
 
-def JHU_deaths(start, end):
+def deaths(start, end):
     data = {}
 
     df_deaths = readit(end)
@@ -40,15 +39,13 @@ def JHU_deaths(start, end):
         file.write("FIPS,Deaths\n") # header
         for key, value in data.items():
             file.write(",".join([key, str(value)]) + "\n")
-    df = pd.read_csv(filename)
-    return df
 
-def JHU_deaths():
-    JHU_deaths("05-01-2021.csv", "05-31-2021.csv")
-    JHU_deaths("05-01-2021.csv", "06-30-2021.csv")
-    JHU_deaths("05-01-2021.csv", "07-31-2021.csv")
-    JHU_deaths("05-01-2021.csv", "08-31-2021.csv")
-    JHU_deaths("05-01-2021.csv", "09-30-2021.csv")
-    JHU_deaths("05-01-2021.csv", "10-31-2021.csv")
-    JHU_deaths("05-01-2021.csv", "11-30-2021.csv")
-JHU_deaths()
+start = "05-01-2021.csv"
+
+deaths(start, "06-01-2021.csv")
+deaths(start, "07-01-2021.csv")
+deaths(start, "08-01-2021.csv")
+deaths(start, "09-01-2021.csv")
+deaths(start, "10-01-2021.csv")
+deaths(start, "11-01-2021.csv")
+deaths(start, "11-30-2021.csv")
