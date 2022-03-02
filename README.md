@@ -44,4 +44,14 @@ plt.savefig('../img/'+month+'.')
 ```
 #### 2. Then I use a list contains each month, and run the ```plot_month()``` in a for loop.
 
-**For this assignment. I use my in JHU_data.py and Jerry‘s**
+![May](img/May.png)
+![June](img/June.png)
+![July](img/July.png)
+![August](img/August.png)
+![September](img/September.png)
+![October](img/October.png)
+![November](img/November.png)
+
+
+
+**For this assignment. I use my JHU_data.py, merge_v2.py and Jerry's  vaccines.py in assignment6**
