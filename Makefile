@@ -19,12 +19,12 @@ vaccines: data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz
 # Create CSV with JHU data
 deaths: data/
 	mkdir -p data/JHU
-	python -B src/JHU_data.py
+	python -B src/deaths.py
 
 # Create the merged datasets
 merge: data/JHU/ data/CDC/
 	mkdir -p data/Merge
-	python -B src/merge_v2.py
+	python -B src/merge.py
 
 # Create series of scatter plots, save .png files to 'img' directory
 scatters:
@@ -36,8 +36,8 @@ test:
 	python -B src/test.py
 
 # Combine generated png's to make an animation
-animation: scatters img/*.png
-	python -B src/animation_option2.py
+animation: scatters
+	python -B src/animation.py
 
 # Remove image and data directories
 clean:

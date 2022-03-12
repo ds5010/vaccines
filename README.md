@@ -1,6 +1,6 @@
 # Exploring COVID-19 Vaccine Effectiveness
 
-![](img/animation.gif)
+![](example_animation.gif)
 
 ## Overview 
 This analysis aims to explore the relationship between Covid-19 vaccinations and deaths attributed to Covid-19 in the U.S. between 5/31/21 - 11/30/21 to analyze the effectiveness of the Covid-19 vaccination over time.
@@ -65,7 +65,7 @@ Additionally, the make file allows you to:
 
 ## Output
 Assuming all is well, the output should look something like this:
-![](img/animation.gif)
+![](example_animation.gif)
 
 ## Analysis
 
