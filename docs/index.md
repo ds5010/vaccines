@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html>
-<body>
-  # Exploring COVID-19 Vaccine Effectiveness
+# Exploring COVID-19 Vaccine Effectiveness
 
 ![](example_animation.gif)
 
@@ -100,5 +97,3 @@ These findings suggest that behavioral differences in rural vs. urban communitie
 [Philip Bogden](https://github.com/pbogden) | [Sophia Cofone](https://github.com/sophiacofone) | [Qiwei "Jerry" Hu](https://github.com/JerryV77) |
 [Connor Lynch](https://github.com/CCLynch) | [Philip Mathieu](https://github.com/PhilipMathieu) | [Bridget Mohler](https://github.com/b-mohler) |
 [Matthew Ray](https://github.com/MatthewjRay) | [Kayne Ryan](https://github.com/kayneryan) | [Zeng Yune](https://github.com/zyune) |
-  </body>
-</html>
