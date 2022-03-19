@@ -33,6 +33,7 @@ scatters:
 
 # Create single scatterplot and show in window
 test:
+	mkdir -p test_img
 	python -B src/test.py
 
 # Combine generated png's to make an animation
