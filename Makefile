@@ -43,3 +43,9 @@ animation: scatters
 # Remove image and data directories
 clean:
 	rm -r data img
+
+# unit test on JHU and Merge data. Check if  JHU and Merge data are already in local.
+test_JHU: 
+	python -B tests/test_JHU.py 
+test_Merge:
+	python -B tests/test_Merge.py
