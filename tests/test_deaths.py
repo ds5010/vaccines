@@ -15,3 +15,9 @@ class DeathsTest(unittest.TestCase):
     def test_get_confirm_number_JHU(self):
         df = get_confirm_number_JHU(self.start, self.end)
         # NEED TO ADD ASSERTS
+    
+    def tearDown(self):
+        # check that class variables have not been changed
+        self.assertEqual(self.start, "05-01-2021.csv")
+        self.assertEqual(self.end, "06-30-2021.csv")
+   
