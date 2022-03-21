@@ -5,6 +5,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import sys
+import numpy as np
 
 def scatter(month):
     df = pd.read_csv('data/Merge/vaccinations-and-deaths-'+month+'.csv', converters={'FIPS' : str})
@@ -24,6 +25,13 @@ def scatter(month):
     ax.set_ylim(0,400) #[KR] changed from 500 limit to 400 limit
     ax.set_title("Vaccine Effectiveness Snapshot as of: "+ month)
     fig.set_size_inches(8,6)
+    ax.spines['top'].set_visible(False) #[MR] Removes top spine
+    ax.spines['right'].set_visible(False) #[MR] Removes right spine
+    ax.grid(color='gray', linestyle='-', linewidth=0.25, alpha=0.6) #[MR] Adds gridlines
+    
+    #[MR] Adds best fit line 
+    m, b = np.polyfit(x, y, 1)
+    plt.plot(x, m*x + b, alpha=0.8, c='dimgray')
 
     #[KR] adding plot scale variable
     plot_scl = 100 #converts population units to pixel units
