@@ -49,11 +49,6 @@ def get_death_number_JHU(start, end):
     return df
 
 
-# test case 01
-# start = "05-01-2021.csv"
-# end = "06-30-2021.csv"
-# get_JHU_data(start, end)
-
     """This is a function that returns the confirmed number from start_date to end_date
     Parameters: 
         start_date:str , write it in form "05-01-2021.csv",
@@ -90,12 +85,6 @@ def get_confirm_number_JHU(start, end):
     df = pd.read_csv(filename)
     print()
     return df
-
-
-# test case 02
-# start = "05-01-2021.csv"
-# end = "06-30-2021.csv"
-# get_confirm_number_JHU(start, end)
 
     """This function write death number into 7(month) csv file, each file document death number from 05-01 to the end of this month
     Please create a JHU file in ../data First, Or this function will give error. 
