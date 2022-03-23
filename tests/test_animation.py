@@ -11,7 +11,7 @@ class Testanimation(unittest.TestCase):
                       '08-31-2021.png',
                       '09-30-2021.png',
                       '10-31-2021.png',
-                      '11-30-2021.png',
+                      '11-30-2021.png'
                       'animation.gif']
 
     def test_files(self):
@@ -19,7 +19,7 @@ class Testanimation(unittest.TestCase):
         Checking for local PNGs in directory img
         """
         list = os.listdir("img")
-        self.assertEqual(self.files, sorted(list))
+        self.assertEqual(self.files, list)
 
 if __name__ == '__main__':
     unittest.main()
