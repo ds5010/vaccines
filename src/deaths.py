@@ -29,11 +29,15 @@ def get_death_number_JHU(start, end):
     df_deaths = readit(end)
     for i, row in df_deaths.iterrows():
         fips = row['FIPS']
+        if len(fips) == 4:
+            fips = "0" + fips
         data[fips] = row["Deaths"]
     # print(data)
     df_deaths = readit(start)
     for i, row in df_deaths.iterrows():
         fips = row['FIPS']
+        if len(fips) == 4:
+            fips = "0" + fips
         data[fips] -= row["Deaths"]
 
     # Write dictionary to a CSV file
