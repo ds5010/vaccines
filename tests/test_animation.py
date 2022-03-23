@@ -18,7 +18,7 @@ class Testanimation(unittest.TestCase):
         """
         Checking for local PNGs in directory img
         """
-        list = os.listdir("../img")
+        list = os.listdir("img")
         self.assertEqual(self.files, sorted(list))
 
 if __name__ == '__main__':
