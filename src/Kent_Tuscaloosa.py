@@ -3,13 +3,18 @@ import pandas as pd
 import numpy as np
 
 def comparison():
-    months = ['May', 'June', 'July', 'August', 'September', 'October', 'November']
-    csv_dates = ['05-31-2021', '06-30-2021', '07-31-2021', '08-31-2021', '09-30-2021', '10-31-2021', '11-30-2021']
-    index = -1
+    months = {
+        'May':'05-31-2021',
+        'June':'06-30-2021',
+        'July':'07-31-2021',
+        'August':'08-31-2021',
+        'September':'09-30-2021',
+        'October':'10-31-2021',
+        'November':'11-30-2021'
+        }
     file_list = []
-    for month in months:
-        index+=1
-        df = pd.read_csv('data/Merge/vaccinations-and-deaths-' + csv_dates[index] +'.csv', converters={'FIPS' : str})
+    for month, csv_date in months.items():
+        df = pd.read_csv('data/Merge/vaccinations-and-deaths-' + csv_date +'.csv', converters={'FIPS' : str})
         df['Deaths_Per_1e5'] = df['Deaths'] / df['Census2019_18PlusPop'] * 1e5
         df['Month'] = month
         file_list.append(df)
