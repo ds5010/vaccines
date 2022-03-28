@@ -1,71 +1,75 @@
 # Exploring COVID-19 Vaccine Effectiveness
 
-![](example_animation.gif)
+![](img/animation.gif)
 
 ## Overview 
-This analysis aims to explore the relationship between Covid-19 vaccinations and deaths attributed to Covid-19 in the U.S. between 5/31/21 - 11/30/21 to analyze the effectiveness of the Covid-19 vaccination over time.
+This analysis aims to explore the relationship between Covid-19 vaccinations and deaths attributed to Covid-19 in the U.S. between 5/31/21 - 11/30/21 to analyze the effectiveness of the Covid-19 vaccination over time.  
+
+These dates represent the time period between when vaccines became broadly available in Spring 2021 and the emergence of the omicron variant in late November 2021.
 
 ## Data
 
-Data related to the Covid-19 vaccination was sourced from the Center For Disease Control and Prevention (CDC) and data related to Covid-19 deaths was sourced from Johns Hopkins University (JHU).
+Data related to the Covid-19 vaccination was sourced from the Center For Disease Control and Prevention (CDC) and data related to Covid-19 deaths was sourced from Johns Hopkins University (JHU). Data in this repo was accessed on Sunday, March 27 2022. 
 
-To begin to assess the effectiveness of the vaccination over time, the % of the vaccinated population over 18 years of age (CDC) is compared to Covid related deaths per 100k (JHU). The data was broken down by U.S. region (West, Midwest, South, Northeast) based on the [Census Bureau regional divisions](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf), and a snapshot was of data was taken at the of each month to create a more accurate representation. Because the JHU cumulates deaths, the time series was adjusted to compute the difference in death figures between dates. 
+To begin to assess the effectiveness of the vaccination over time, the % of the vaccinated population over 18 years of age (CDC) is compared to Covid related deaths per 100k (JHU). The data was broken down by U.S. region (West, Midwest, South, Northeast) based on the [Census Bureau regional divisions](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf), and a snapshot was of data was taken at the of each month to create a more accurate representation. Because the JHU data reflect deaths that accumulate over time, the time series was adjusted to compute the difference in death figures between dates.  
+
+Links to the data sources are cited below, but this repo contains a 'source of truth' set of data for reproducibility. 
 
 **CDC Data**
 ```
 https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh
-```
+``` 
 
 **Johns Hopkins University Data**
 ```
 https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e7282b480c8
 ```
+## Cleaning and linking the data
+The CDC data is made available as a single file, updated daily by the CDC since May 24, 2021 (the file contains data about vaccinations beginning in December 2020, though). The JHU data is released daily as well, but each file contains a snapshot of one specific day. Both sources include FIPS codes--when combined with the date information, we can link datasets together to explore our research question.  
+
+Because of the May-November timeframe we wanted to analyze, we focused on data for seven specific dates:
+* May 31, 2021
+* June 30, 2021
+* July 31, 2021
+* August 31, 2021
+* September 30, 2021
+* October 31, 2021
+* November 30, 2021
+
+Here are the steps our team took:
+1. Wrote code that downloads and compresses the CDC data
+1. Wrote code that samples the CDC data for specifc dates and columns (noted below), and returned separate .csv files for each selected date:
+* FIPS *(unique five-digit identifier for each US county)*
+* Recip_County *(name of the county)*
+* Recip_State *(name of the state)*
+* Series_Complete_18PlusPop_Pct *(percentage of 18+ year old population in that county that is fully vaccinated on that date)*
+* Census2019_18PlusPop *(the 2019 US Census population of that county)*
+1. Wrote code that downloads selected dates from JHU data, calculates the cumulative number of deaths in the timespan from May 1, 2021 through the selected date, and returns a .csv file 
+1. Wrote code that merges those two sets of data, resulting in seven snapshots of vaccination and death rate data for each county in the US captured in .csv files
+
+The user can examine these files in the **data** directory. 
+
 
 ## Running The Code 
 
 A [Makefile](./Makefile) has been created to streamline code compilation. To execute, clone the vaccines repository to your local drive & run the makefile outlined below.
 
-_Note: If you would prefer to skip steps 1-5 (saving time but not directly accessing the authoritative data sources), clone the ```main_with_data``` branch._
-
-1. Create a data directory:
-```
-make data
-```
-2. Download and compress the CDC data.
-```
-make cdc
-```
-3. Create a CSV file with sampled CDC data.
-```
-make vaccines
-```
-4. Download deaths data from JHU and create CSV files
-
-```
-make deaths
-```
-5. Merge the CDC vaccination dataset with the JHU deaths dataset and clean the dataset to remove non U.S. data.
-```
-make merge
-```
-6. Create a time series of scatter plots and save .png files to the 'img' directory
+1. Create a time series of scatter plots and save .png files to the 'img' directory
 ```
 make scatters
 ```
-7. Generate an animation using the plots generated above
+2. Generate an animation using the plots generated above
 ```
 make animation
 ```
 
-Additionally, the make file allows you to:
-* Do all of the above with one command by running ```make all```
-* Create a single scatter plot for EDA purposes with ```make test```
-* Delete the data and img directories to start fresh with ```make clean```
+Additionally, the make file allows you to download the data, merge the files, plot the data and create the GIF with one command by running ```make all```
+
 
 
 ## Output
 Assuming all is well, the output should look something like this:
-![](example_animation.gif)
+![](img/animation.gif)
 
 ## Analysis
 
