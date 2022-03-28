@@ -1,21 +1,24 @@
 # Exploring COVID-19 Vaccine Effectiveness
+This project is an exploratory data analysis (EDA) of COVID-19 vaccine effectiveness. The team decided to examine commonly used COVID-19 information sources (Center For Disease Control and Johns Hopkins University) and visualize the relationship between Covid-19 vaccinations and deaths the United States between 6/30/21 - 11/30/21. The visualization below represents this analysis.
 
-## Overview 
-This analysis aims to explore the relationship between Covid-19 vaccinations and deaths attributed to Covid-19 in the U.S. between 6/30/21 - 11/30/21 to analyze the effectiveness of the Covid-19 vaccination over time.
-
-
-June         |  July |  August
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://github.com/MatthewjRay/5010_Data/raw/main/06-30-2021.png" width="500" height="300"> |  <img src="https://github.com/MatthewjRay/5010_Data/raw/main/07-31-2021.png" width="500" height="300"> |  <img src="https://github.com/MatthewjRay/5010_Data/raw/main/08-31-2021.png" width="500" height="300">
-
-September        |  October |  November
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://github.com/MatthewjRay/5010_Data/raw/main/09-30-2021.png" width="500" height="300"> |  <img src="https://github.com/MatthewjRay/5010_Data/raw/main/10-31-2021.png" width="500" height="300"> |  <img src="https://github.com/MatthewjRay/5010_Data/raw/main/11-30-2021.png" width="500" height="300"> 
+![](img/animation.gif)
 
 
-## Data
+## About the Data
 
-Data related to the Covid-19 vaccination was sourced from the Center For Disease Control and Prevention (CDC) and data related to Covid-19 deaths was sourced from Johns Hopkins University (JHU).
+Data related to the Covid-19 vaccination was sourced from the Center For Disease Control and Prevention (CDC). Data related to Covid-19 deaths was sourced from Johns Hopkins University (JHU). 
+
+**CDC Data**
+```
+https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh
+```
+
+**Johns Hopkins University Data**
+```
+https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e7282b480c8
+```
+
+For more information about the d
 
 To begin to assess the effectiveness of the vaccination over time, the % of the vaccinated population over 18 years of age (CDC) is compared to Covid related deaths per 100k (JHU). The data was broken down by U.S. region (West, Midwest, South, Northeast) based on the [Census Bureau regional divisions](https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf), and a snapshot was of data was taken at the of each month to create a more accurate representation. Because the JHU cumulates deaths, the time series was adjusted to compute the difference in death figures between dates. 
 
