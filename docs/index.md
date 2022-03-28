@@ -28,7 +28,7 @@ These findings suggest that behavioral differences in rural vs. urban communitie
 
 ## Vaccine Effectiveness - County Comparison
 
-Another way to explore vaccine effectiveness is by comparing specific counties. Similar to the Complete U.S. visulization, the analysis below is comparing the number of deaths and vaccination percentages over the same time period. However, the visulization shows the differece between Kent County, RI and Tuscaloosa County, AL.
+Another way to explore vaccine effectiveness is by comparing specific counties. Similar to the Complete U.S. visualization, the analysis below is comparing the number of deaths and vaccination percentages over the same time period. However, the visualization shows the difference between Kent County, RI and Tuscaloosa County, AL.
 
 <img src="https://github.com/ds5010/vaccines/blob/main/img/comparison.png" width="500" height="300"> |
 
@@ -39,7 +39,7 @@ For this analysis, the team chose counties with similar population demographics 
 
 ## Vaccine Effectiveness - County Comparison
 
-The visulization indicates a very noticable difference between the number of deaths in a county with high vaccination rates (Kent, RI) and the number of deaths in a county with low vaccination rates (Tuscaloosa, AL). It is important to note that this analysis only compares two specific counties and does not take into consideration other relevant factors such as mask wearing and social distancing. However, it is still interesting to see that the conclusion from the analysis of all U.S. counties is the same as the analysis from individual county perspective. 
+The visualization indicates a very noticeable difference between the number of deaths in a county with high vaccination rates (Kent, RI) and the number of deaths in a county with low vaccination rates (Tuscaloosa, AL). It is important to note that this analysis only compares two specific counties and does not take into consideration other relevant factors such as mask wearing and social distancing. However, it is still interesting to see that the conclusion from the analysis of all U.S. counties is the same as the analysis from individual county perspective. 
 
 ## About the Data
 
