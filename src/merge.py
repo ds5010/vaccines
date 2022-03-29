@@ -35,7 +35,7 @@ date : The last date of each month.  form date = "11-30-2021"
 def write_merge_data_to_csv(date):
     base_Merge = "data/Merge/"
     df = merge_v2(date)
-    print(df)
+    # print(df)
     df.to_csv(base_Merge+"vaccinations-and-deaths-"+date+'.csv', index=False)
 
 
