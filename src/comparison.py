@@ -2,12 +2,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 from collections import defaultdict
+import sys
 
 def fips_to_name(FIPS):
     map = defaultdict(lambda: FIPS)
     map.update({
         '44003': 'Kent County, RI',
-        '01125': 'Tuscaloosa County, AL'
+        '01125': 'Tuscaloosa County, AL',
+        '23005': 'Cumberland County, ME'
     })
     return map[FIPS]
 
@@ -33,6 +35,7 @@ def comparison(FIPS_1='44003', FIPS_2='01125'):
     FIPS_1_name = fips_to_name(FIPS_1)
     FIPS_2_name = fips_to_name(FIPS_2)
 
+    print("Comparing "+FIPS_1_name+" and "+FIPS_2_name)
     FIPS_1_vax = cleaned_df.loc[cleaned_df['FIPS']==FIPS_1]
     FIPS_1_vax = FIPS_1_vax["Series_Complete_18PlusPop_Pct"]
     FIPS_1_death = cleaned_df.loc[cleaned_df['FIPS']==FIPS_1]
@@ -64,4 +67,12 @@ def comparison(FIPS_1='44003', FIPS_2='01125'):
     handles_2.extend(handles_1) # adds the list items from handles_1 to handles_2
     ax2.legend(handles = handles_2, loc='upper left')
     fig.savefig("img/comparison.png")
-comparison()
+
+def main(argv):
+    comparison(argv[0], argv[1])
+
+if __name__ == "__main__":
+    argv = sys.argv[1:]
+    if not (len(argv) == 2 or len(argv) == 0):
+        print("Invalid number of arguments.")
+    main(argv)
