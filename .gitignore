@@ -1,6 +1,6 @@
 #File extensions to ignore
-#*.csv
-#*.gz
+*.csv
+*.gz
 
 #Mac clean-up
 *.ds_store
