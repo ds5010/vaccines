@@ -3,14 +3,8 @@
 ## Overview 
 This analysis aims to explore the relationship between Covid-19 vaccinations and deaths attributed to Covid-19 in the U.S. between 6/30/21 - 11/30/21 to analyze the effectiveness of the Covid-19 vaccination over time.
 
+<img src="https://github.com/ds5010/vaccines/raw/main/img/animation.gif" alt="GIF showing vaccination rate vs deaths per 100k over time">
 
-June         |  July |  August
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://github.com/MatthewjRay/5010_Data/raw/main/06-30-2021.png" width="500" height="300"> |  <img src="https://github.com/MatthewjRay/5010_Data/raw/main/07-31-2021.png" width="500" height="300"> |  <img src="https://github.com/MatthewjRay/5010_Data/raw/main/08-31-2021.png" width="500" height="300">
-
-September        |  October |  November
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://github.com/MatthewjRay/5010_Data/raw/main/09-30-2021.png" width="500" height="300"> |  <img src="https://github.com/MatthewjRay/5010_Data/raw/main/10-31-2021.png" width="500" height="300"> |  <img src="https://github.com/MatthewjRay/5010_Data/raw/main/11-30-2021.png" width="500" height="300"> 
 
 
 ## Data
