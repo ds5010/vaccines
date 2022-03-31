@@ -26,7 +26,7 @@ These findings suggest that behavioral differences in rural vs. urban communitie
 
 Another way to explore vaccine effectiveness is by comparing specific counties. Similar to the Complete U.S. visualization, the analysis below is comparing the number of deaths and vaccination percentages over the same time period. However, the visualization shows the difference between Kent County, RI and Tuscaloosa County, AL.
 
-<img src="https://github.com/ds5010/vaccines/blob/main/img/comparison.png" width="500" height="300">
+<img src="https://github.com/ds5010/vaccines/blob/main/example_comparison.png" width="500" height="300">
 
 
 ## Methodology -  County Comparison
