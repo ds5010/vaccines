@@ -13,7 +13,7 @@ def create_gif(filename_save):
 
     #this part looks at the img directory and reads in all the files that end with .png (only going to bring in those)
     for filename in sorted(os.listdir('img')):
-        if filename[-4:] == '.png':
+        if filename[-4:] == '.png' and not filename == 'comparison.png':
             f = os.path.join('img',filename)
             im = iio.imread(f)
             images.append(im)
