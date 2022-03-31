@@ -1,16 +1,12 @@
 # Exploring COVID-19 Vaccine Effectiveness
 
-This project is an exploratory data analysis (EDA) of COVID-19 vaccine effectiveness. The team decided to examine commonly used COVID-19 information sources (Center For Disease Control and Johns Hopkins University) and visualize the relationship between Covid-19 vaccinations and deaths the United States between 6/30/21 - 11/30/21. 
+This project is an exploratory data analysis (EDA) of COVID-19 vaccine effectiveness. The team decided to examine commonly used COVID-19 information sources ([Center For Disease Control and Prevention](https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh) and [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e7282b480c8)) and visualize the relationship between Covid-19 vaccinations and deaths the United States between 5/31/21 - 11/30/21. 
+
+For more information about the data (including the data processing/cleaning preformed for this project), please visit the [project repository.](https://github.com/ds5010/vaccines) 
 
 ## Vaccine Effectiveness - All U.S. Counties
 
-June         |  July |  August
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://github.com/ds5010/vaccines/blob/main/img/06-30-2021.png" width="500" height="300"> |  <img src="https://github.com/ds5010/vaccines/blob/main/img/07-31-2021.png" width="500" height="300"> |  <img src="https://github.com/ds5010/vaccines/blob/main/img/08-31-2021.png" width="500" height="300">
-
-September        |  October |  November
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://github.com/ds5010/vaccines/blob/main/img/09-30-2021.png" width="500" height="300"> |  <img src="https://github.com/ds5010/vaccines/blob/main/img/10-31-2021.png" width="500" height="300"> |  <img src="https://github.com/ds5010/vaccines/blob/main/img/11-30-2021.png" width="500" height="300"> 
+placeholder for animated gif
 
 ## Methodology - All U.S. Counties
 
@@ -30,7 +26,7 @@ These findings suggest that behavioral differences in rural vs. urban communitie
 
 Another way to explore vaccine effectiveness is by comparing specific counties. Similar to the Complete U.S. visualization, the analysis below is comparing the number of deaths and vaccination percentages over the same time period. However, the visualization shows the difference between Kent County, RI and Tuscaloosa County, AL.
 
-<img src="https://github.com/ds5010/vaccines/blob/main/img/comparison.png" width="500" height="300"> |
+<img src="https://github.com/ds5010/vaccines/blob/main/img/comparison.png" width="500" height="300">
 
 
 ## Methodology -  County Comparison
@@ -40,19 +36,3 @@ For this analysis, the team chose counties with similar population demographics 
 ## Vaccine Effectiveness - County Comparison
 
 The visualization indicates a very noticeable difference between the number of deaths in a county with high vaccination rates (Kent, RI) and the number of deaths in a county with low vaccination rates (Tuscaloosa, AL). It is important to note that this analysis only compares two specific counties and does not take into consideration other relevant factors such as mask wearing and social distancing. However, it is still interesting to see that the conclusion from the analysis of all U.S. counties is the same as the analysis from individual county perspective. 
-
-## About the Data
-
-Data related to the Covid-19 vaccination was sourced from the Center For Disease Control and Prevention (CDC). Data related to Covid-19 deaths was sourced from Johns Hopkins University (JHU). 
-
-**CDC Data**
-```
-https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh
-```
-
-**Johns Hopkins University Data**
-```
-https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e7282b480c8
-```
-
-For more information about the data (including the data processing/cleaning preformed for this project), please visit the [project repository.](https://github.com/ds5010/vaccines) 
