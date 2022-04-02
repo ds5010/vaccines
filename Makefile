@@ -52,10 +52,10 @@ animation: scatters
 # This could be useful if you want to regenerate the merged dataset
 # and images with more recent data.
 clean:
-	rm -r data img
+	rm -rf data img
 
 clean-img:
-	rm -r img
+	rm -rf img
 
 # Run unit tests on JHU and Merge data.
 test_JHU: 
