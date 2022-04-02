@@ -11,6 +11,7 @@ def vaccines(desired_date):
     
 
     # Filter by date
+    desired_date = desired_date.replace("-", "/")
     df = df[df["Date"] == desired_date]
 
     # Extract columns of interest

@@ -10,7 +10,6 @@ import numpy as np
 def scatter(month):
     df = pd.read_csv('data/Merge/vaccinations-and-deaths-'+month+'.csv', converters={'FIPS' : str})
     df['Deaths_Per_1e5'] = df['Deaths'] / df['Census2019_18PlusPop'] * 1e5
-
     xlabel = 'Series_Complete_18PlusPop_Pct'
     ylabel = 'Deaths_Per_1e5'
 
@@ -71,6 +70,7 @@ def create_scatters():
         "11-30-2021"
     ]
     for date in dates:
+        # print(date)
         scatter(date)
 
 if __name__ == "__main__":
