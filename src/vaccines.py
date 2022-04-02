@@ -1,8 +1,10 @@
-# Sample one date from the source dataset and write it to an intermediate file
 import pandas as pd
 
-# Source data
 def vaccines(desired_date):
+    """Sample one date from the source dataset and write it to an intermediate file
+    Parameters:
+        desired_date: str, date to be sampled for vaccine completedness
+    """
     input_filename = "./data/COVID-19_Vaccinations_in_the_United_States_County.csv.gz"
     df = pd.read_csv(input_filename, compression="gzip", converters={'FIPS' : str})
     print("START:", df.shape)
@@ -28,12 +30,20 @@ def vaccines(desired_date):
     df.to_csv(output_filename, index=False)
     return df
 
-def Vaccines_all():
-    vaccines('05/31/2021')
-    vaccines('06/30/2021')
-    vaccines('07/31/2021')
-    vaccines('08/31/2021')
-    vaccines('09/30/2021')
-    vaccines('10/31/2021')
-    vaccines('11/30/2021')
-Vaccines_all()
+def create_vaccines():
+    """This function generates vaccination data for seven different dates.
+    """
+    dates = [
+        "05-31-2021",
+        "06-30-2021",
+        "07-31-2021",
+        "08-31-2021",
+        "09-30-2021",
+        "10-31-2021",
+        "11-30-2021"
+    ]
+    for date in dates:
+        vaccines(date)
+
+if __name__ == "__main__":
+    create_vaccines()

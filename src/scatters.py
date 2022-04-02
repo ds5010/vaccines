@@ -58,11 +58,20 @@ def scatter(month):
     plt.tight_layout()    
     plt.savefig('img/'+month+'.png')
 
+def create_scatters():
+    """This function creates seven scatter plots based on the merged data.
+    """
+    dates = [
+        "05-31-2021",
+        "06-30-2021",
+        "07-31-2021",
+        "08-31-2021",
+        "09-30-2021",
+        "10-31-2021",
+        "11-30-2021"
+    ]
+    for date in dates:
+        scatter(date)
 
-scatter('05-31-2021')
-scatter('06-30-2021')
-scatter('07-31-2021')
-scatter('08-31-2021')
-scatter('09-30-2021')
-scatter('10-31-2021')
-scatter('11-30-2021')
+if __name__ == "__main__":
+    create_scatters()

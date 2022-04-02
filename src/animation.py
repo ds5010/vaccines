@@ -8,6 +8,10 @@ import imageio as iio
 import os
 
 def create_gif(filename_save):
+    """This function creates a gif animation from a folder of png images
+    Parameters:
+        filename_save: str, the filename to save the gif as
+    """
     #makes a list of im NumPy arrays based on a list of .png images (read from folder)
     images = list()
 
