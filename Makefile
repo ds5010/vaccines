@@ -1,6 +1,11 @@
 ###### "Macro" Commands ######
 # Make new plots (leaving data intact)
 .PHONY: img
+# The two variables below are passed to the comparison.py module.
+# To change which counties are compared, add "fips_1=[number]" or
+# "fips_2=[number]" as arguments to your "make img"
+fips_1 = 44003
+fips_2 = 01125
 img: clean-img scatters comparison animation
 
 # Make everything (including refreshing data)
@@ -39,8 +44,6 @@ scatters: data/Merge/
 
 # Compare two counties based on FIPS
 # The two variables below can be changed here or overridden by environment variables using make -e
-fips_1 = 44003
-fips_2 = 01125 
 comparison: data/Merge/
 	python -B src/comparison.py $(fips_1) $(fips_2)
 
