@@ -1,6 +1,12 @@
-# Do everything (including refreshing data)
+###### "Macro" Commands ######
+# Make new plots (leaving data intact)
+.PHONY: img
+img: clean-img scatters comparison animation
+
+# Make everything (including refreshing data)
 all: clean data cdc vaccines deaths merge scatters animation comparison
 
+###### Specific Commands ######
 # Make the data directory
 .PHONY: data # lets us use "make data" even though data/ is also a directory
 data:
@@ -32,6 +38,7 @@ scatters: data/Merge/
 	python -B src/scatters.py
 
 # Compare two counties based on FIPS
+# The two variables below can be changed here or overridden by environment variables using make -e
 fips_1 = 44003
 fips_2 = 01125 
 comparison: data/Merge/
@@ -46,6 +53,9 @@ animation: scatters
 # and images with more recent data.
 clean:
 	rm -r data img
+
+clean-img:
+	rm -r img
 
 # Run unit tests on JHU and Merge data.
 test_JHU: 
