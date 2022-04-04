@@ -1,15 +1,13 @@
 import pandas as pd
 
-"""
-This function return a dataframe that contains merge data. It use dataframes merge option that Prof. Bogden mentioned
-scatterplot team can use it to get the dataframe they want
-But please make sure that the csv to merge are already in in the ..data/JHU and ..data/CDC
-parameter: 
-date : The last date of each month.  form date = "11-30-2021"
-"""
-
-
-def merge_v2(date):
+def merge(date):
+    """
+    This function return a dataframe that contains merge data. It use dataframes merge option that Prof. Bogden mentioned
+    scatterplot team can use it to get the dataframe they want
+    But please make sure that the csv to merge are already in in the ..data/JHU and ..data/CDC
+    Parameters: 
+        date : str, The last date of each month.  form date = "11-30-2021"
+    """
     base_CDC = "data/CDC/"
     base_JHU = "data/JHU/"
     df = pd.read_csv(base_CDC + "vaccinations-" + date + ".csv",
@@ -20,42 +18,31 @@ def merge_v2(date):
     # Add the deaths data to the dataframe
     return df.merge(deaths, on='FIPS')
 
-# test case 1
-# date = "11-30-2021"
-# df = merge(date)
-# print(df)
-
-
-"""This function write a csv to directory data/Merge. 
-parameter: 
-date : The last date of each month.  form date = "11-30-2021"
-"""
-
-
 def write_merge_data_to_csv(date):
+    """This function write a csv to directory data/Merge. 
+    Parameters: 
+        date: str, The last date of each month.  form date = "11-30-2021"
+    """
     base_Merge = "data/Merge/"
-    df = merge_v2(date)
+    df = merge(date)
     # print(df)
     df.to_csv(base_Merge+"vaccinations-and-deaths-"+date+'.csv', index=False)
 
-
-# test case 2
-# date = "05-31-2021"
-# write_merge_data_to_csv(date)
-"""This function write 7 csvs to directory data/Merge. 
-Please make sure that the csv to merge are already in in the ..data/JHU and ..data/CDC
-
-"""
-
-
 def create_merge_data():
-    write_merge_data_to_csv("05-31-2021")
-    write_merge_data_to_csv("06-30-2021")
-    write_merge_data_to_csv("07-31-2021")
-    write_merge_data_to_csv("08-31-2021")
-    write_merge_data_to_csv("09-30-2021")
-    write_merge_data_to_csv("10-31-2021")
-    write_merge_data_to_csv("11-30-2021")
+    """This function write 7 csvs to directory data/Merge. 
+    Please make sure that the csv to merge are already in in the ..data/JHU and ..data/CDC
+    """
+    dates = [
+        "05-31-2021",
+        "06-30-2021",
+        "07-31-2021",
+        "08-31-2021",
+        "09-30-2021",
+        "10-31-2021",
+        "11-30-2021"
+    ]
+    for date in dates:
+        write_merge_data_to_csv(date)
 
-
-create_merge_data()
+if __name__ == "__main__":
+    create_merge_data()

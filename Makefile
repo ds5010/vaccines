@@ -1,6 +1,17 @@
-# Do everything (including refreshing data)
+###### "Macro" Commands ######
+# Make new plots (leaving data intact)
+.PHONY: img
+# The two variables below are passed to the comparison.py module.
+# To change which counties are compared, add "fips_1=[number]" or
+# "fips_2=[number]" as arguments to your "make img"
+fips_1 = 44003
+fips_2 = 01125
+img: clean-img scatters comparison animation
+
+# Make everything (including refreshing data)
 all: clean data cdc vaccines deaths merge scatters animation comparison
 
+###### Specific Commands ######
 # Make the data directory
 .PHONY: data # lets us use "make data" even though data/ is also a directory
 data:
@@ -32,8 +43,7 @@ scatters: data/Merge/
 	python -B src/scatters.py
 
 # Compare two counties based on FIPS
-fips_1 = 44003
-fips_2 = 01125 
+# The two variables below can be changed here or overridden by environment variables using make -e
 comparison: data/Merge/
 	python -B src/comparison.py $(fips_1) $(fips_2)
 
@@ -45,7 +55,10 @@ animation: scatters
 # This could be useful if you want to regenerate the merged dataset
 # and images with more recent data.
 clean:
-	rm -r data img
+	rm -rf data img
+
+clean-img:
+	rm -rf img
 
 # Run unit tests on JHU and Merge data.
 test_JHU: 
