@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vaccine effectiveness</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <span class="fs-4">Covid-19 Vaccine effectiveness</span>
+      </a>
+
+      <a href="/" class="nav-item align-right mx-2">
+        <img src="github.png" width="32px"/>
+        <img src="cdc.png" width="32px"/>
+      </a>
+    </header>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <img src="./COVID-19.png" width="1200px" height="300px"/>
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Instruction</h1>
+        <p class="col-md-8 fs-4">The purpose of this project is to use the data collected from CDC website and JHU website to do the EDA of the effectiveness of the vaccines according to the period which starts from May.01,2021 to Nov.30,2021.</p>
+        <a class="btn btn-primary btn-lg" href="Explore.html">Explore more</a>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 rounded-3">
+          <h2>Plot the scatter plots</h2>
+          <p>In this part, I wrote a file which is called ploitit.py. In this file, I use two variables to do the scatterplots for each month to show the data visualization, which are the death rate vs the vaccination rate. The death rate is calculated by (death cases in the specified county)/(the total population in the specified county). And the vaccination rate is the number of Series_Complete_18PlusPop_Pct. Then I set the vaccination rate as the xlabel and the death rate as the ylabel. After I get the graphs for each month, I store them under the directory of img.</p>
+          <img src="https://raw.githubusercontent.com/ds5010/vaccines/main/example_animation.gif" class="img-fluid">
+          <a class="btn btn-outline-secondary" href="#">Go back to the top</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>Data Collection</h2>
+          <h3>Vaccine Data from CDC website</h3>
+          <p>In the CDC website, we can find the data about the population who are 18+ years old and have received the full series of vaccines. Then I have created a vaccines.py file to output these data into 7 different csv files according to the time period, such as vaccinations-05-01-2021.csv. You can also find these csv file in the directory of data.</p>
+          <h4>Death Data from JHU website</h4>
+          <p>In the JHU website, we can find the data about the situations of death cases in different counties and states inside the United States. I use death.py to output these data also into 7 different csv files by the time period, such as dealths-05-01-2021-to-06-01-2021.csv. Each csv file have the same start date, which is May.01,2021, and have different ending dates, such as June.01,2021 and so on. You can find these csv file in the directory of data.</p>
+          <h5>Merge vaccine data and death data</h5>
+          <p>In this section, I wrote a file which is called merge-vaccination-and-deaths.py. In this file, you can merge two different datasets into one csv file by the "FIPS" code during the time processing. Take [vaccinations-and-deaths-May-2021.csv] as an example, you can find the data which happened during the time in May, which includes the number of vaccination rate for each counties and states, the total of population in each counties in the specific state by Census, and the number of death cases in May.</p>
+        <!--<div class="ratio ratio-1x1">
+          <iframe src="folium/index.html"></iframe>
+        </div>-->
+        
+        <!--<button class="btn btn-outline-secondary mt-1" type="button">More detials</button>-->
+          <a class="btn btn-outline-secondary" href="#">Go back to the top</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-5 mb-4">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Conclusion</h1>
+          <p class="col-md-20 fs-4">According to these 7 graphs, I found that during May to Novomeber, the vaccination rate keep increasing. But during the period from August to October, there was a sudden spike in the death rate. After I have searched on the Internet, I found that the Omicron virus happened from September. It indicates that why the reason the scatter graphs show there was a sudden increase happened. In the conclusion, I suppose that the vaccination rate is keep increasing and the death rate is keep decreasing, which means the vaccines are effective to us.</p>
+        </div>
+      </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+            <img src="github.png" width="32px"/>
+            &copy; 2022 DS5010 Vaccines project
+    </footer>
+  </div><!-- .container -->
+      
+  </body>
+</html>
