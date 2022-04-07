@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explanation of data analysis showing effectiveness of COVID-19 vaccine in US in 2021">
+    <meta name="author" content="The students in DS5010 Spring 2022, with thanks to Bootstrap">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>DS5010 COVID Vaccine Project</title>
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .site-header {
+        background-color: #fff;
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="heroes.css" rel="stylesheet">
+  </head>
+  <body>
+
+    
+<header class="site-header sticky-top py-1">
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+      <a class="me-3 py-2 text-dark text-decoration-none" href="#list-item-1">Assignment</a>
+      <a class="me-3 py-2 text-dark text-decoration-none" href="#list-item-2">Data</a>
+      <a class="me-3 py-2 text-dark text-decoration-none" href="#list-item-3">Process</a>
+      <a class="py-2 text-dark text-decoration-none" href="#list-item-4">Results</a>
+    </div>
+  </nav>
+</header>
+
+
+<main>
+
+  
+  <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5" style="padding-top: 60px;">
+      <h1 class="display-5 fw-bold">COVID-19 Vaccine Effectiveness</h1>
+      <p class="col-md-8 fs-4">An analysis compiled by a group of aspiring data scientists at The Roux Institute.</p>
+      <button class="btn btn-primary btn-lg" type="button" href="https://github.com/ds5010/vaccines">Check out the GitHub page</button>
+      <button class="btn btn-success btn-lg" type="button" href="https://github.com/ds5010/vaccines">Learn about the authors</button>
+    </div>
+  </div>
+  
+  <div class="row align-items-md-stretch">
+    <div class="col-md-6 text-center">
+      <div class="h-100 p-5 text-dark bg-white rounded-3">
+        <h2>National View</h2>
+        <p>A series of plots showing vaccination rate vs. deaths/100K for each US county, from May-November 2021. The size of the bubble indicates the county's population.</p>
+        <img class="d-block mx-auto mb-4" src="https://github.com/ds5010/vaccines/raw/main/img/animation.gif" alt="GIF showing vaccination rate vs. death/100K rate over time" height="400" width="500">
+        <button class="btn btn-outline-primary" type="button">Learn more</button>  
+      </div>
+    </div>
+
+    <div class="col-md-6 text-center">
+      <div class="h-100 p-5 text-dark bg-white rounded-3">
+        <h2>County View</h2>
+        <p>Comparing two counties with equal populations but very different vaccination rates.<br />
+        <br />
+        </p>
+        <img class="d-block mx-auto mb-4" src="https://github.com/ds5010/vaccines/raw/main/img/comparison.png" alt="Chart showing vaccination rate vs. deaths/100K rate for Kent County, RI and Tuscaloosa County, AL" height="400" width="500">
+        <button class="btn btn-outline-primary" type="button">Learn more</button>   
+    </div>
+  </div>>
+
+  <div class="row align-items-md-stretch">
+
+    <div class="col-md-3">
+        <div id="list-example" class="list-group">
+            <a class="list-group-item list-group-item-action" href="#list-item-1">The assignment</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-2">The data</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-3">The process</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-4">The results</a>
+        </div>
+    </div>
+    
+    <div id="list-item-1" class="col-md-9" style="margin-top: 40px;">
+        <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+            <h4>The assignment</h4>
+            <p>The class was asked to explore whether the COVID-19 vaccines available in the US (manufactured by Pfizer/BioNTech, Moderna and J&J) are effective. We chose to define "effective" by investigating if there was a relationship between vaccination rate and death rate across US geographic regions.</p>
+            <p>We examined the time period between when vaccines became broadly available (in Spring 2021) and the emergence of the omicron variant (in late November 2021).</p>
+            <h4 id="list-item-2">The data</h4>
+            <p>Data related to the Covid-19 vaccination was sourced from the <a href="https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh">Centers For Disease Control and Prevention (CDC)</a> and data related to Covid-19 deaths was sourced from <a href="https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e7282b480c8">Johns Hopkins University (JHU)</a>. Data in this repo was accessed on Sunday, March 27 2022.</p>
+            <p>To begin to assess the effectiveness of the vaccination over time, the % of the vaccinated population over 18 years of age (CDC) is compared to Covid related deaths per 100k (JHU). The data was broken down by U.S. region (West, Midwest, South, Northeast) based on the Census Bureau regional divisions, and a snapshot was of data was taken at the of each month to create a more accurate representation.</p>
+            <p>Because the JHU data reflect deaths that accumulate over time, the time series was adjusted to compute the difference in death figures between dates.</p>
+            <h4 id="list-item-3">The process</h4>
+                <ul class="list-unstyled">
+                    <li>The CDC data is made available as a single file, updated daily by the CDC since May 24, 2021 (the file contains data about vaccinations beginning in December 2020, though). The JHU data is released daily as well, but each file contains a snapshot of one specific day. Both sources include FIPS codes--when combined with the date information, we can link datasets together to explore our research question.</li>
+                    <li>Because of the May-November timeframe we wanted to analyze, we focused on data for seven specific dates:</li>
+                    <ul>
+                        <li>May 31, 2021</li>
+                        <li>June 30, 2021</li>
+                        <li>July 31, 2021</li>
+                        <li>August 31, 2021</li>
+                        <li>September 30, 2021</li>
+                        <li>October 31, 2021</li>
+                        <li>November 30, 2021</li>
+                    </ul>
+                    <li> </li>
+                    <li>Here are the steps our team took:</li>
+                    <ul>
+                        <li>Wrote code that downloads and compresses the CDC data</li>
+                        <li>Wrote code that samples specific fields of the CDC data for specific dates</li>
+                        <li>Wrote code that downloads selected dates from JHU data, calculates the cumulative number of deaths in the timespan from May 1, 2021 through the selected date</li>
+                        <li>Wrote code that merges those two sets of data, resulting in seven snapshots of vaccination and death rate data for each county in the US</li>
+                    </ul>
+                    <li>Finally, we wrote code that created visualizations of the data and saved them as image files. We used nationwide data to createa an animated GIF. We also selected two counties that had similar populations to see if any trends were apparent.</li>
+                <p> <br /> </p>
+            <h4 id="list-item-4">The results</h4>
+            <p><strong>Analysis: Nationwide View</strong></p>
+            <p>The proportion of the population that is vaccinated increases over the time frame, which you can see as the bubbles move from left to right. The quantity of deaths increases as well month-by-month, which makes sense: more deaths accumulate each month while the denominator (the 2019 Census population) stays the same. We also know that the Delta variant hit during this time period, which was much more contagious than previous strains: we should expect deaths to increase.</p>
+            <p>However, consider the trajectories of the large bubbles (representing highly populous counties) vs. their smaller counterparts. The largest bubbles progress steadily into the 70-80% vaccinated range by the end of the timeframe, and their rate of deaths generally tops out at 100 deaths/100K people. Many smaller bubbles struggle to reach the 50% vaccinated mark, and several of their death rates soar into the 300-400 deaths/100K range. Comparing these two groups suggest that vaccination is highly effective–otherwise the more highly-populated areas would likely have similar (or even worse) death rates, given the physical proximity of the population in these urban centers.</p>        
+            <p>Regional differences prove to be fertile ground for continued research. Many of the small blue dots, representing counties in the South, don’t reach the 50% vaccinated threshold. However, the large blue bubbles (representing urban areas in the South) follow a more direct left-to-right trajectory–and tellingly, keep their death rates low.</p>
+            <p>These findings suggest that behavioral differences in rural vs. urban communities (mask wearing, social distancing, etc.) or differences in political ideology may affect vaccine adoption–but they offer little doubt that the COVID vaccines are effective at minimizing the death toll of the virus.<br />
+            <br />
+            </p>
+            <p><strong>Analysis: County vs. County View</strong></p>    
+            <p>The visualization indicates a very noticeable difference between the number of deaths in a county with high vaccination rates (Kent, RI) and the number of deaths in a county with low vaccination rates (Tuscaloosa, AL). It is important to note that this analysis only compares two specific counties and does not take into consideration other relevant factors such as mask wearing and social distancing. However, it is still interesting to see that the conclusion from the analysis of all U.S. counties is the same as the analysis from individual county perspective.</p>
+        </div>
+    
+    </div>
+  </div>
+</main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
+
+      
+  </body>
+</html>
