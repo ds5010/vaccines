@@ -18,16 +18,14 @@
 
 
     <style>
+    #list-item-1, #list-item-2, #list-item-3, #list-item-4 {
+      padding: 60px 15px 0;
+    }
+
       .site-header {
         background-color: #fff;
         -webkit-backdrop-filter: saturate(180%) blur(20px);
         backdrop-filter: saturate(180%) blur(20px);
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
       }
     </style>
 
@@ -39,7 +37,7 @@
 
     
 <header class="site-header sticky-top py-1">
-  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+  <nav id=navbar-example class="nav nav-pills container d-flex flex-column flex-md-row justify-content-between navbar">
     <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
       <a class="me-3 py-2 text-dark text-decoration-none" href="#list-item-1">Assignment</a>
       <a class="me-3 py-2 text-dark text-decoration-none" href="#list-item-2">Data</a>
@@ -51,7 +49,6 @@
 
 
 <main>
-
   
   <div class="p-5 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5" style="padding-top: 60px;">
