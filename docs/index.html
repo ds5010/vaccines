@@ -36,36 +36,35 @@
               }
             }
           </style>
-          
-<!-- Custom styles for this template -->
-<link href="navbar-top-fixed.css" rel="stylesheet">
 </head>
 <body>
-  
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-<div class="container-fluid">
-  <a class="navbar-brand" href="#">Home</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Visuals</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Analysis</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Acknowledgements</a>
-      </li>
-    </ul>
-    <a href="/" class="nav-item align-right mx-2">
-      <img src="github.png" width="32px"/>
-    </a>
-  </div>
-</div>
-</nav>
+  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">COVID-19 Vaccine Effectiveness</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#visuals">Visuals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#analysis">Analysis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#acknowledgements">Acknowledgements</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-end-item">
+        <a href="https://github.com/ds5010/vaccines" target="_blank" title="GitHub" class="nav-item align-right mx-2">
+          <img src="github.png" width="32px" />
+        </a>
+      </div>
+    </div>
+  </nav>
 
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -84,7 +83,7 @@
       </div>
     </div>
 
-    <div class="row align-items-md-stretch">
+    <div class="row align-items-md-stretch" id="visuals">
       <div class="col-md-6">
         <div class="h-100 p-5 bg-light border rounded-3">
           <h2>National View</h2>
@@ -107,11 +106,8 @@
     </div>
 
 <div class="container">
-<a href="/" class="nav-item align-right mx-2">
-      </a>
-    </header>
 
-    <div class="p-5 mb-4 bg-light rounded-3">
+    <div class="p-5 mb-4 bg-light rounded-3" id="analysis">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Analysis</h1>
         <p class="col-md-8 fs-4">National View</p>
@@ -123,11 +119,8 @@
     </div>
 
 <div class="container">
-<a href="/" class="nav-item align-right mx-2">
-      </a>
-    </header>
 
-    <div class="p-10 mb-6 bg-light rounded-3">
+    <div class="p-10 mb-6 bg-light rounded-3" id="acknowledgements">
       <div class="container-fluid py-5">
         <p class="col-md-8 fw-bold fs-4">Acknowledgements</p>
         <p>For more information about the contributors of this project, please visit the <a href="https://github.com/ds5010/vaccines/graphs/contributors">project repository</a>.</p>
