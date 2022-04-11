@@ -50,3 +50,8 @@ test_JHU:
 	python -B tests/test_JHU.py 
 test_Merge:
 	python -B tests/test_Merge.py
+
+# run a python development server to work on the docs
+docs:
+	cd docs/
+	python -m http.server
