@@ -55,17 +55,19 @@ The user can examine these files in the **data** directory.
 A [Makefile](./Makefile) has been created to streamline code compilation. To execute, clone the vaccines repository to your local drive & run the makefile outlined below.
 
 1. Create a time series of scatter plots and save .png files to the 'img' directory
-```
+```bash
 make scatters
 ```
 2. Generate an animation using the plots generated above
-```
+```bash
 make animation
+```
+3. Start a basic python development server to view the docs on a local machine
+```bash
+make serve
 ```
 
 Additionally, the make file allows you to download the data, merge the files, plot the data and create the GIF with one command by running ```make all```
-
-
 
 ## Output
 Assuming all is well, the output should look something like this:
