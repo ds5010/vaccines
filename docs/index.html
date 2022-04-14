@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Explanation of data analysis showing effectiveness of COVID-19 vaccine in US in 2021">
+  <meta name="author" content="The students in DS5010 Spring 2022, with thanks to Bootstrap">
+  <meta name="generator" content="Hugo 0.88.1">
+  <title>DS5010 COVID Vaccine Project</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="manifest" href="/docs/5.1/assets/img/favicons/manifest.json">
+  <link rel="mask-icon" href="/docs/5.1/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+  <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+  <meta name="theme-color" content="#7952b3">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">COVID-19 Vaccine Effectiveness</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#visuals">Visuals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#analysis">Analysis</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#acknowledgements">Acknowledgements</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-end-item">
+        <a href="https://github.com/ds5010/vaccines" target="_blank" title="GitHub" class="nav-item align-right mx-2">
+          <img src="github.png" width="32px" />
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <span class="fs-4">COVID-19 Vaccine Effectiveness</span>
+      </a>
+
+      <a href="/" class="nav-item align-right mx-2">
+      </a>
+    </header>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Exploring COVID-19 Vaccine Effectiveness</h1>
+        <p class="col-md-8 fs-4">This project is an exploratory data analysis (EDA) of COVID-19 vaccine effectiveness
+          compiled by a group of aspiring data scientists at The Roux Institute. The team decided to examine commonly
+          used COVID-19 information sources (<a
+            href="https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh">Center
+            For Disease Control and Prevention</a> and <a
+            href="https://github.com/CSSEGISandData/COVID-19/tree/f57525e860010f6c5c0c103fd97e2e7282b480c8">Johns
+            Hopkins University</a>) and visualize the relationship between Covid-19 vaccinations and deaths the United
+          States between 5/31/21 - 11/30/21.</p>
+        <p>For more information about the data (including the data processing/cleaning preformed for this project),
+          please visit the <a href="https://github.com/ds5010/vaccines">project repository</a>.</p>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch" id="visuals">
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>National View</h2>
+          <div class="ratio ratio-4x3">
+            <img src="https://raw.githubusercontent.com/ds5010/vaccines/main/img/animation.gif" class="img-fluid">
+          </div>
+          <p class="col-md-8 fs-4">Methodology</p>
+          <p>To assess the effectiveness of the vaccination over time, the % of the vaccinated population over 18 years
+            of age (CDC) is compared to Covid related deaths per 100k (JHU). The data was broken down by U.S. region
+            (West, Midwest, South, Northeast) based on the <a
+              href="https://www2.census.gov/geo/pdfs/maps-data/maps/reference/us_regdiv.pdf">Center For Census Bureau
+              regional divisions</a>, and a snapshot was of data was taken at the of each month to create a more
+            accurate representation. Because the JHU cumulates deaths, the time series was adjusted to compute the
+            difference in death figures between dates.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>County View</h2>
+          <div class="ratio ratio-4x3">
+            <img src="https://raw.githubusercontent.com/ds5010/vaccines/main/img/comparison.png" class="img-fluid">
+          </div>
+          <p class="col-md-8 fs-4">Methodology</p>
+          <p>Similar to the National View, this analysis is comparing the number of deaths and vaccination percentages
+            over the same time period. However, the visualization shows a county-level comparison between Kent County,
+            RI and Tuscaloosa County, AL.</p>
+          <p>The team selected Kent County and Tuscaloosa County due to their similar population demographics, but
+            highly different rates of vaccination to see the impact (if any) on death rates due to COVID-19. The same
+            JHU and CDC data sources were used.</p>
+        </div>
+      </div>
+
+      <div class="container">
+
+        <div class="p-5 mb-4 bg-light rounded-3" id="analysis">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Analysis</h1>
+            <p class="col-md-8 fs-4">National View</p>
+            <p>The proportion of the population that is vaccinated increases over the time frame, which you can see as
+              the bubbles move from left to right. The quantity of deaths increases as well month-by-month, which makes
+              sense: more deaths accumulate each month while the denominator (the 2019 Census population) stays the
+              same. We also know that the Delta variant hit during this time period, which was much more contagious than
+              previous strains: we should expect deaths to increase.</p>
+            <p>However, consider the trajectories of the large bubbles (representing highly populous counties) vs. their
+              smaller counterparts. The largest bubbles progress steadily into the 70-80% vaccinated range by the end of
+              the timeframe, and their rate of deaths generally tops out at 100 deaths/100K people. Many smaller bubbles
+              struggle to reach the 50% vaccinated mark, and several of their death rates soar into the 300-400
+              deaths/100K range. Comparing these two groups suggest that vaccination is highly effective–otherwise the
+              more highly-populated areas would likely have similar (or even worse) death rates, given the physical
+              proximity of the population in these urban centers.</p>
+            <p>Regional differences prove to be fertile ground for continued research. Many of the small blue dots,
+              representing counties in the South, don’t reach the 50% vaccinated threshold. However, the large blue
+              bubbles (representing urban areas in the South) follow a more direct left-to-right trajectory–and
+              tellingly, keep their death rates low.</p>
+            <p>These findings suggest that behavioral differences in rural vs. urban communities (mask wearing, social
+              distancing, etc.) or differences in political ideology may affect vaccine adoption–but they offer little
+              doubt that the COVID vaccines are effective at minimizing the death toll of the virus.</p>
+            <p class="col-md-8 fs-4">County View</p>
+            <p>The visualization indicates a very noticeable difference between the number of deaths in a county with
+              high vaccination rates (Kent, RI) and the number of deaths in a county with low vaccination rates
+              (Tuscaloosa, AL). It is important to note that this analysis only compares two specific counties and does
+              not take into consideration other relevant factors such as mask wearing and social distancing. However, it
+              is still interesting to see that the conclusion from the analysis of all U.S. counties is the same as the
+              analysis from individual county perspective.</p>
+          </div>
+        </div>
+
+        <div class="container">
+
+          <div class="p-10 mb-6 bg-light rounded-3" id="acknowledgements">
+            <div class="container-fluid py-5">
+              <p class="col-md-8 fw-bold fs-4">Acknowledgements</p>
+              <p>For more information about the contributors of this project, please visit the <a
+                  href="https://github.com/ds5010/vaccines/graphs/contributors">project repository</a>.</p>
+              <p>The inspiration to visualize vaccine rate v death rate for this project came from the following NPR
+                article: <a
+                  href="https://www.npr.org/sections/health-shots/2021/12/05/1059828993/data-vaccine-misinformation-trump-counties-covid-death-rate">Pro-Trump
+                  counties now have far higher COVID death rates. Misinformation is to blame</a>.</p>
+            </div>
+          </div>
+
+          <footer class="pt-3 mt-4 text-muted border-top">
+            &copy; 2022 DS5010
+          </footer>
+        </div><!-- .container -->
+
+</body>
+
+</html>
