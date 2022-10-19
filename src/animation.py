@@ -6,6 +6,7 @@
 
 import imageio as iio
 import os
+from datetime import datetime #NEW
 
 def create_gif(filename_save):
     """This function creates a gif animation from a folder of png images
@@ -14,10 +15,23 @@ def create_gif(filename_save):
     """
     #makes a list of im NumPy arrays based on a list of .png images (read from folder)
     images = list()
+    
+    #new code below
+    #created a dictionary that has datetime objects as keys and values as filenames as strings
+    newsort=dict()
+    for file in os.listdir('img'):
+        try:
+           newsort[datetime.strptime(file[:10],'%m-%d-%Y')]=file  #if filename can be interpreted as datetime object then add it to dictionary w/ key=datetime obj and value=filename
+        except:
+            print('')
+    #sort the dictionary using sorted. Sorted returns a list, so the dict function and the items method are required to get back to the sorted dictionary
+    newsort=dict(sorted(newsort.items())) #sorts the dictionary by datetime obj keys
+    #end new code block, but the following for loop loops through newsort values instead of the img drive like it did before
 
     #this part looks at the img directory and reads in all the files that end with .png (only going to bring in those)
-    for filename in sorted(os.listdir('img')):
-        if filename[-4:] == '.png' and not filename == 'comparison.png':
+    for filename in newsort.values(): #loop through dictionary values, which are filenames, loops in order of keys, which have been sorted chronologically
+        if filename[-4:] == '.png' and not filename == 'comparison.png': #this isn't needed anymore
+            #print(filename)
             f = os.path.join('img',filename)
             im = iio.imread(f)
             images.append(im)
