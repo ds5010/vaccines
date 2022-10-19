@@ -6,7 +6,7 @@
 
 import imageio as iio
 import os
-
+import time # added by Max Burtis for hw02 
 def create_gif(filename_save):
     """This function creates a gif animation from a folder of png images
     Parameters:
@@ -15,8 +15,11 @@ def create_gif(filename_save):
     #makes a list of im NumPy arrays based on a list of .png images (read from folder)
     images = list()
 
+    timestamps=[image for image in os.listdir('img') if image.endswith('png')] #added by Max Burtis for hw02
+    timestamps.sort(key=lambda x: time.mktime(time.strptime(x[:-4],"%m-%d-%Y")))  #added by Max Burtis for hw02
+
     #this part looks at the img directory and reads in all the files that end with .png (only going to bring in those)
-    for filename in sorted(os.listdir('img')):
+    for filename in timestamps: #added by Max Burtis for hw02
         if filename[-4:] == '.png' and not filename == 'comparison.png':
             f = os.path.join('img',filename)
             im = iio.imread(f)
