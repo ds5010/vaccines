@@ -1,6 +1,8 @@
 # Exploring COVID-19 Vaccine Effectiveness
 ## National View
 ![](img/animation.gif)
+ 
+adding some tex - MB
 
 ## County View
 ![](img/comparison.png)
