@@ -60,7 +60,7 @@ def scatter(month):
 def create_scatters():
     """This function creates seven scatter plots based on the merged data.
     """
-    months = pd.read_csv(months.csv)
+    months = pd.read_csv("months.csv")
     dates = months.date.to_list()
     for date in dates:
         # print(date)
