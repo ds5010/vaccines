@@ -2,6 +2,19 @@
 ## National View
 ![](img/animation.gif)
 
+## NorthEast Region
+![](img/NorthEast.gif)
+
+## South Region
+![](img/South.gif)
+
+## West Region
+![](img/West.gif)
+
+
+## West Region
+![](img/West.gif)
+
 ## County View
 ![](img/comparison.png)
 

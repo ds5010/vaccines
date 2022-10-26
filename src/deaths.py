@@ -92,16 +92,12 @@ def create_death_number_JHU():
     Please create a JHU file in ../data First, Or this function will give error. 
     If you don't want to wast time to input augument to create csv file for every month please run following function
     """
-    start = "05-01-2021"
-    ends = [
-        "05-31-2021",
-        "06-30-2021",
-        "07-31-2021",
-        "08-31-2021",
-        "09-30-2021",
-        "10-31-2021",
-        "11-30-2021"
-    ]
+    months=pd.read_csv("months.csv")
+    months=months.date.to_list()
+
+    start = months[0]
+    ends = months
+    
     for end in ends:
         get_death_number_JHU(start, end)
 

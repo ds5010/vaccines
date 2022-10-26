@@ -17,13 +17,14 @@ def create_gif(filename_save):
 
     #this part looks at the img directory and reads in all the files that end with .png (only going to bring in those)
     for filename in sorted(os.listdir('img')):
-        if filename[-4:] == '.png' and not filename == 'comparison.png':
+        if filename[-4:] == '.png' and not filename == 'comparison.png' and not any([a in filename for a in ["South", "West", "NorthEast", "Midwest"]]):
             f = os.path.join('img',filename)
             im = iio.imread(f)
             images.append(im)
 
     #making the gif from the pngs
-    iio.mimsave(filename_save,images,duration = 1)
+    if len(images)>0:
+    	iio.mimsave(filename_save,images,duration = 1)
 
 if __name__ == "__main__":
     create_gif('img/animation.gif')
