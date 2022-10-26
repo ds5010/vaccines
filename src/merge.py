@@ -32,9 +32,9 @@ def create_merge_data():
     """This function write 7 csvs to directory data/Merge. 
     Please make sure that the csv to merge are already in in the ..data/JHU and ..data/CDC
     """
-    months=pd.read_csv("data/months.csv")
+    months=pd.read_csv("months.csv")
     dates=months.date.to_list()
-    
+
     for date in dates:
         write_merge_data_to_csv(date)
 
