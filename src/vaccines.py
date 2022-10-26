@@ -34,7 +34,7 @@ def vaccines(desired_date):
 def create_vaccines():
     """This function generates vaccination data for seven different dates.
     """
-    months=pd.read_csv("data/months.csv")
+    months=pd.read_csv("months.csv")
     dates=months.date.to_list()
     for date in dates:
         vaccines(date)
