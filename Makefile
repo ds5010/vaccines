@@ -63,7 +63,7 @@ animation: scatters
 	
 # Combine generated png's to make an animation
 animationR: scattersR
-	python -B src/animation.py
+	python -B src/animation_regions.py
 
 # Remove data and image directories
 # This could be useful if you want to regenerate the merged dataset
