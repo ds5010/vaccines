@@ -16,6 +16,12 @@ def scatter(month):
     x = df[xlabel]
     y = df[ylabel]
     area = df['Census2019_18PlusPop'] / 1e6     #population in millions
+    area1 = area >= 4
+    area2 = area >= 2 and area<area1
+    area3 = area <= area2
+
+    areas = [area1, area2, area3]
+
 
     fig, ax = plt.subplots()
     ax.set_xlabel("Percent of Population (+18) Considered Fully Vaccinated")
@@ -42,7 +48,7 @@ def scatter(month):
     
     #[MR] Added color to reflect region based on state
     #[KR] changed s to incorporate plot_scl variable
-    scatter = ax.scatter(x, y, s=area*plot_scl, alpha=0.5,c=df['Recip_State'].map(colors), edgecolor='white')
+    scatter = ax.scatter(x, y, s=(for a in areas)*plot_scl, alpha=0.5,c=df['Recip_State'].map(colors), edgecolor='white')
 
     #[MR] Creates fake line to use index for second legend
     markers = [plt.Line2D([0,0],[0,0],color=color, marker='o', linestyle='') for color in regions.values()]
@@ -60,15 +66,8 @@ def scatter(month):
 def create_scatters():
     """This function creates seven scatter plots based on the merged data.
     """
-    dates = [
-        "05-31-2021",
-        "06-30-2021",
-        "07-31-2021",
-        "08-31-2021",
-        "09-30-2021",
-        "10-31-2021",
-        "11-30-2021"
-    ]
+    months = pd.read_csv("months.csv")
+    dates = months.date.to_list()
     for date in dates:
         # print(date)
         scatter(date)
