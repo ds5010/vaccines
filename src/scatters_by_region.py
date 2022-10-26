@@ -65,19 +65,19 @@ def create_scatters():
     """This function creates seven scatter plots based on the merged data.
     """
 
-    scatter("05-31-2021")
-    # dates = [
-    #     "05-31-2021",
-    #     "06-30-2021",
-    #     "07-31-2021",
-    #     "08-31-2021",
-    #     "09-30-2021",
-    #     "10-31-2021",
-    #     "11-30-2021"
-    # ]
-    # for date in dates:
-    #     # print(date)
-    #     scatter(date)
+    
+    dates = [
+        "05-31-2021",
+        "06-30-2021",
+        "07-31-2021",
+        "08-31-2021",
+        "09-30-2021",
+        "10-31-2021",
+        "11-30-2021"
+    ]
+    for date in dates:
+        # print(date)
+        scatter(date)
 
 if __name__ == "__main__":
     create_scatters()

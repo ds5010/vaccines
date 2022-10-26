@@ -11,6 +11,9 @@ img: clean-img scatters comparison animation
 # Make everything (including refreshing data)
 all: clean data cdc vaccines deaths merge scatters animation comparison
 
+#Makes the regions data
+regions: clean data cdc vaccines deaths merge scattersR animationR 
+
 ###### Specific Commands ######
 # Make the data directory
 .PHONY: data # lets us use "make data" even though data/ is also a directory
@@ -41,6 +44,12 @@ merge: data/JHU/ data/CDC/
 scatters: data/Merge/
 	mkdir -p img
 	python -B src/scatters.py
+	
+	
+# Create series of scatter plots, save .png files to 'img' directory
+scattersR: data/Merge/
+	mkdir -p img
+	python -B src/scatters_by_region.py
 
 # Compare two counties based on FIPS
 # The two variables below can be changed here or overridden by environment variables using make -e
@@ -49,6 +58,11 @@ comparison: data/Merge/
 
 # Combine generated png's to make an animation
 animation: scatters
+	python -B src/animation.py
+	
+	
+# Combine generated png's to make an animation
+animationR: scattersR
 	python -B src/animation.py
 
 # Remove data and image directories
