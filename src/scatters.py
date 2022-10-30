@@ -22,7 +22,11 @@ def scatter(month):
     ax.set_ylabel("Deaths per 100K")
     ax.set_xlim(0,100)
     ax.set_ylim(0,400) #[KR] changed from 500 limit to 400 limit
-    ax.set_title("Vaccine Effectiveness Snapshot as of: "+ month)
+
+
+    ax.set_title(" Vaccine Effectiveness Snapshot ", y=1.07, fontsize= 'xx-large') #[KR] added title )
+    ax.text(0.5, 0.75, month , horizontalalignment='center', verticalalignment='center', transform=ax.transAxes 
+    ,fontsize= 40, color='gray')    #added by Nathan & Pegah
     fig.set_size_inches(8,6)
     ax.spines['top'].set_visible(False) #[MR] Removes top spine
     ax.spines['right'].set_visible(False) #[MR] Removes right spine
