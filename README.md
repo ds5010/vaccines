@@ -1,6 +1,9 @@
 # Exploring COVID-19 Vaccine Effectiveness
-
+## National View
 ![](img/animation.gif)
+
+## County View
+![](img/comparison.png)
 
 ## Overview 
 This analysis aims to explore the relationship between Covid-19 vaccinations and deaths attributed to Covid-19 in the U.S. between 5/31/21 - 11/30/21 to analyze the effectiveness of the Covid-19 vaccination over time.  
@@ -72,10 +75,10 @@ Additionally, the make file allows you to download the data, merge the files, pl
 ## Output
 Assuming all is well, the output should look something like this:
 ![](img/animation.gif)
+and this:
+![](img/comparison.png)
 
-## Analysis
-
-
+## Analysis - National View
 The proportion of the population that is vaccinated increases over the time frame, which you can see as the bubbles move from left to right. The quantity of deaths increases as well month-by-month, which makes sense: more deaths accumulate each month while the denominator (the 2019 Census population) stays the same. We also know that the Delta variant hit during this time period, which was much more contagious than previous strains: we should expect deaths to increase.  
   
 However, consider the trajectories of the large bubbles (representing highly populous counties) vs. their smaller counterparts. The largest bubbles progress steadily into the 70-80% vaccinated range by the end of the timeframe, and their rate of deaths generally tops out at 100 deaths/100K people. Many smaller bubbles struggle to reach the 50% vaccinated mark, and several of their death rates soar into the 300-400 deaths/100K range. Comparing these two groups suggest that vaccination is highly effective--otherwise the more highly-populated areas would likely have similar (or even worse) death rates, given the physical proximity of the population in these urban centers.   
@@ -84,16 +87,25 @@ Regional differences prove to be fertile ground for continued research. Many of 
   
 These findings suggest that behavioral differences rural vs. urban communities (mask wearing, social distancing, etc.) or differences in political ideology may affect vaccine adoption--but they offer little doubt that the COVID vaccines are effective at minimizing the death toll of the virus. 
   
+## Analysis - County View
+This visualization shows a county-level comparison between Kent County, RI and Tuscaloosa County, AL.
+
+The team selected Kent County and Tuscaloosa County due to their similar population demographics, but highly different rates of vaccination to see the impact (if any) on death rates due to COVID-19. 
+
+The visualization indicates a very noticeable difference between the number of deaths in a county with high vaccination rates (Kent, RI) and the number of deaths in a county with low vaccination rates (Tuscaloosa, AL). It is important to note that this analysis only compares two specific counties and does not take into consideration other relevant factors such as mask wearing and social distancing. However, it is still interesting to see that the conclusion from the analysis of all U.S. counties is the same as the analysis from individual county perspective.
+
+## Acknowledgements
+
+The inspiration to visualize vaccine rate v death rate for this project came from the following NPR article: [Pro-Trump counties now have far higher COVID death rates. Misinformation is to blame.](https://www.npr.org/sections/health-shots/2021/12/05/1059828993/data-vaccine-misinformation-trump-counties-covid-death-rate)
+
 ## Future Considerations
 
 **Dataset**  
-  * Compare different regions with similar population sizes 
   * Compare individual areas with higher vaccination rates against similar areas with lower vaccination rates
   * Subset data to explore effectiveness across different age ranges 
   * Segment date ranges and countes to align with peaks and valleys in Covid spread
 
 **Code**  
-  * Add regression line to better visualize trends in data
   * Explore the use of different chart types (map, bar chart, line graph)
 
 ### Contributors

@@ -22,7 +22,11 @@ def scatter(month):
     ax.set_ylabel("Deaths per 100K")
     ax.set_xlim(0,100)
     ax.set_ylim(0,400) #[KR] changed from 500 limit to 400 limit
-    ax.set_title("Vaccine Effectiveness Snapshot as of: "+ month)
+
+
+    ax.set_title(" Vaccine Effectiveness Snapshot ", y=1.07, fontsize= 'xx-large') #[KR] added title )
+    ax.text(0.5, 0.75, month , horizontalalignment='center', verticalalignment='center', transform=ax.transAxes 
+    ,fontsize= 40, color='gray')    #added by Nathan & Pegah
     fig.set_size_inches(8,6)
     ax.spines['top'].set_visible(False) #[MR] Removes top spine
     ax.spines['right'].set_visible(False) #[MR] Removes right spine
@@ -60,15 +64,8 @@ def scatter(month):
 def create_scatters():
     """This function creates seven scatter plots based on the merged data.
     """
-    dates = [
-        "05-31-2021",
-        "06-30-2021",
-        "07-31-2021",
-        "08-31-2021",
-        "09-30-2021",
-        "10-31-2021",
-        "11-30-2021"
-    ]
+    months = pd.read_csv("months.csv")
+    dates = months.date.to_list()
     for date in dates:
         # print(date)
         scatter(date)
